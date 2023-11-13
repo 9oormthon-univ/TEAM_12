@@ -38,7 +38,7 @@ export const s = {
     &::-webkit-scrollbar-track {
       background-color: transparent;
     }
-    ㄹ &::-webkit-scrollbar-thumb {
+    &::-webkit-scrollbar-thumb {
       border-radius: 1rem;
       background-color: ${props => props.theme.colors.gray1};
     }
