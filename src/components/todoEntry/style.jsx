@@ -4,7 +4,7 @@ import colors from "./../../style/theme";
 export const s = {
   TodoEntryWrapper: styled.div`
     display: flex;
-    padding: 1.25rem;
+    padding: 1rem;
     align-items: flex-start;
     gap: 0.625rem;
     align-self: stretch;
@@ -26,9 +26,27 @@ export const s = {
   TodoContentsWrapper: styled.div`
     display: flex;
     flex-direction: column;
+    overflow: auto;
     align-items: flex-start;
     gap: 0.3125rem;
-    flex: 1 0 0;
+    padding: 0.2rem;
+
+    &::-webkit-scrollbar {
+      height: 0.5rem;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+    ㄹ &::-webkit-scrollbar-thumb {
+      border-radius: 1rem;
+      background-color: ${props => props.theme.colors.gray1};
+    }
+
+    &::-webkit-scrollbar-button {
+      width: 0;
+      height: 0;
+    }
   `,
   TodoCategory: styled.span`
     display: flex;
