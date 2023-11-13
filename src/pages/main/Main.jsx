@@ -1,5 +1,6 @@
 import React from "react";
 import * as S from "./style";
+import TeamPageBtn from "../../components/main/teamPageBtn/TeamPageBtn";
 
 function Main() {
   return (
@@ -19,6 +20,21 @@ function Main() {
         컴포넌트&스타일 태그먹여서 사용하면 될 것 같아요 컴포넌트단위별로
         피그마에 나눠놨으니 참고 부탁드려요
       </div>
+      <S.MainWrapper>
+        {/* 네브바 나중에 컴포넌트로 분리해요! */}
+        <S.MainNavWrapper>
+          <S.MainNavBtn>버튼1</S.MainNavBtn>
+          <S.MainNavBtn>버튼2</S.MainNavBtn>
+        </S.MainNavWrapper>
+
+        <S.MainContentWrapper>
+          <TeamPageBtn teamId={1} />
+          <TeamPageBtn teamId={1} />
+          <TeamPageBtn teamId={1} />
+          <TeamPageBtn teamId={1} />
+          <TeamPageBtn teamId={1} />
+        </S.MainContentWrapper>
+      </S.MainWrapper>
     </>
   );
 }
