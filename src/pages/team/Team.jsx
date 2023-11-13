@@ -2,6 +2,7 @@ import React from "react";
 import { s } from "./style";
 import TeamPageHeader from "../../components/team/teamPageHeader/TeamPageHeader";
 import TeamNav from "../../components/team/teamNav/TeamNav";
+import Todo from "../../components/team/todo/Todo.jsx";
 
 function Team() {
   const TeamNames = [
@@ -13,6 +14,77 @@ function Team() {
     { name: "강희진", part: "BE", color: "purple" }
   ];
 
+  const TodayLists = [
+    {
+      id: 1,
+      category: "FE 개발 1차 마감",
+      title: "Calendar Component",
+      color: "blue"
+    },
+    {
+      id: 2,
+      category: "FE 개발 1차 마감",
+      title: "Todo Component",
+      color: "green"
+    },
+    {
+      id: 3,
+      category: "FE 개발 1차 마감",
+      title: "TeamPage member 초...",
+      color: "blue"
+    },
+    {
+      id: 4,
+      category: "BE 개발 1차 마감",
+      title: "나의 todo Filter 기능",
+      color: "purple"
+    },
+    {
+      id: 5,
+      category: "BE 개발 1차 마감",
+      title: "구름 캐릭터 디자인",
+      color: "yellow"
+    },
+    {
+      id: 6,
+      category: "BE 개발 1차 마감",
+      title: "디자인 1차 피드백",
+      color: "orange"
+    }
+  ];
+
+  const UnfinishedLists = [
+    {
+      id: 1,
+      category: "FE 개발 1차 마감",
+      title: "도메인 구매하기",
+      color: "blue"
+    },
+    {
+      id: 2,
+      category: "FE 개발 1차 마감",
+      title: "Progress 디자인 수정 반영",
+      color: "green"
+    },
+    {
+      id: 3,
+      category: "BE 개발 1차 마감",
+      title: "CI/CD 파이프라인 구축",
+      color: "orange"
+    },
+    {
+      id: 4,
+      category: "BE 개발 1차 마감",
+      title: "Cors 오류 수정",
+      color: "purple"
+    },
+    {
+      id: 5,
+      category: "디자인 마감",
+      title: "MainPage 디자인",
+      color: "yellow"
+    }
+  ];
 
   return (
     <s.Team>
@@ -24,6 +96,7 @@ function Team() {
       <s.TeamPageBody>
         <TeamNav logo={""} teams={TeamNames} />
         <s.TeamPageContent>
+          <Todo today={TodayLists} unfinished={UnfinishedLists} />
         </s.TeamPageContent>
       </s.TeamPageBody>
     </s.Team>
