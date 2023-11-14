@@ -3,6 +3,7 @@ import { s } from "./style";
 import TeamPageHeader from "../../components/team/teamPageHeader/TeamPageHeader";
 import TeamNav from "../../components/team/teamNav/TeamNav";
 import Todo from "../../components/team/todo/Todo.jsx";
+import GoalScheduleWrapper from '../../components/goal/goalScheduleWrap/GoalScheduleWrapper.jsx'
 
 function Team() {
   const TeamNames = [
@@ -96,6 +97,7 @@ function Team() {
       <s.TeamPageBody>
         <TeamNav logo={""} teams={TeamNames} />
         <s.TeamPageContent>
+          <GoalScheduleWrapper/>
           <Todo today={TodayLists} unfinished={UnfinishedLists} />
         </s.TeamPageContent>
       </s.TeamPageBody>
