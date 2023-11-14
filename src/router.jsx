@@ -9,8 +9,8 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
     children: [
-      { path: "", element: <Main /> },
-      { path: "team/:teamId", element: <Team /> }
+      { path: "/", element: <Main /> },
+      { path: "teamId/:teamId", element: <Team /> }
     ],
     errorElement: <NotFound />
   }
