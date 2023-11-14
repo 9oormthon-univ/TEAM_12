@@ -3,7 +3,7 @@ import * as S from "./style";
 
 function TeamPageBtn({ teamId }) {
   return (
-    <S.TeamPageBtnWrapper to={`/Team/${teamId}`}>
+    <S.TeamPageBtnWrapper to={`/teamId/${teamId}`}>
       <S.TeamPageBtnThumbnail />
       <S.TeamPageBtnInfo>
         <S.TemaPageBtnTitle>프로젝트 이름</S.TemaPageBtnTitle>
