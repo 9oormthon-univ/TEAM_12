@@ -1,6 +1,7 @@
 import React from "react";
 import * as S from "./style";
 import TeamPageBtn from "../../components/main/teamPageBtn/TeamPageBtn";
+import AddNewTeamBtn from "../../components/main/addNewTeamBtn/AddNewTeamBtn";
 
 function Main() {
   return (
@@ -28,6 +29,7 @@ function Main() {
         </S.MainNavWrapper>
 
         <S.MainContentWrapper>
+          <AddNewTeamBtn/>
           <TeamPageBtn teamId={1} />
           <TeamPageBtn teamId={1} />
           <TeamPageBtn teamId={1} />
