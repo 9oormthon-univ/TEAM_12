@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 
 export const MainTitle = styled.div`
-  font-size: 20px;
+  font-size: 1.25rem;
 `;
 
 export const MainWrapper = styled.div`
@@ -14,22 +14,22 @@ export const MainWrapper = styled.div`
 
 //---------- 네브바
 export const MainNavWrapper = styled.div`
-  width: 200px;
+  width: 12.5rem;
   height: 100%;
 
   display: flex;
   flex-direction: column;
 `;
 export const MainNavBtn = styled.div`
-  padding: 5px 10px;
-  font-size: 16px;
+  padding: 0.3125rem 0.625rem;
+  font-size: 1rem;
 `;
 //---------- 네용
 export const MainContentWrapper = styled.div`
-  width: 800px;
+  width: 50rem;
 
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 
-  row-gap: 40px;
+  row-gap: 2.5rem;
 `;
