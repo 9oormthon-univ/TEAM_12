@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const s ={
-  Backdrop : styled(Link)`
+export const s = {
+  Backdrop: styled(Link)`
     position: fixed;
     top: 0;
     left: 0;
@@ -11,7 +11,7 @@ export const s ={
     z-index: 29;
     background-color: rgba(0, 0, 0, 0.75);
   `,
-  Content : styled.div`
+  Content: styled.div`
     flex-direction: column;
     flex-shrink: 0;
     align-self: stretch;
@@ -22,7 +22,17 @@ export const s ={
     padding: 1.875rem 2.5rem 2.5rem 2.5rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
     z-index: 30;
-    background: #FFFFFF;
+    background: #ffffff;
     height: 100%;
   `,
-}
+  GoalPageWrapper: styled.div`
+    display: flex;
+    padding: 2.5rem 1.25rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.625rem;
+    flex-shrink: 0;
+    align-self: stretch;
+    background: ${p => p.theme.colors.white};
+  `
+};
