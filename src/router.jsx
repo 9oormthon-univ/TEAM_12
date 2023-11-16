@@ -4,6 +4,7 @@ import Main from "./pages/main/Main";
 import NotFound from './pages/notFound/NotFound'
 import Team from './pages/team/Team'
 import { formSubmit } from "./api/resource/action";
+import Goal from "./pages/goal/Goal";
 
 const router = createBrowserRouter([
   {
@@ -11,7 +12,10 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { path: "/", element: <Main />, action:formSubmit},
-      { path: "teamId/:teamId", element: <Team /> ,action:formSubmit}
+      { path: "teamId/:teamId", element: <Team /> ,action:formSubmit, id:'team' ,
+        children :[
+          {path :'goalId/:goalId', element:<Goal/>}
+        ]}
     ],
     errorElement: <NotFound />
   }
