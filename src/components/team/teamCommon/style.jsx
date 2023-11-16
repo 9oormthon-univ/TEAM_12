@@ -1,4 +1,6 @@
 import { styled } from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
 export const s = {
   AlertWrapper: styled.div`
@@ -45,5 +47,32 @@ export const s = {
     background: ${p => p.theme.colors.gray1};
     width: 50rem;
     height: 0.0625rem;
+  `,
+  CheckField: styled.div`
+    display: flex;
+    height: 1.25rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3125rem;
+  `,
+  ChkBox: styled.input.attrs({ type: "checkbox", id: "agree" })`
+    display: flex;
+    width: 1.25rem;
+    height: 1.25rem;
+    padding: 0.3125rem 0.625rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    border-radius: 0.3125rem;
+    cursor: pointer;
+    background: ${props => props.theme.colors.gray0};
+    &:checked {
+      background: red;
+    }
+  `,
+  CheckText: styled.label.attrs({ for: "agree" })`
+    font-size: 0.625rem;
+    font-weight: 400;
+    color: ${p => p.theme.colors.gray2};
   `
 };
