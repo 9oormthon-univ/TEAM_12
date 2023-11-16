@@ -1,8 +1,15 @@
 import { s } from "./style.jsx";
 import TeamCommonAlert from "./../teamCommon/TeamCommonAlert";
 import TeamCommonSectionTitle from "../teamCommon/TeamCommonSectionTitle.jsx";
+
+import TodoEntry from "../../todoEntry/TodoEntry.jsx";
+import TeamCalendar from "../../teamCalendar/teamCalendar.jsx";
+import { useState } from "react";
+import moment from "moment";
+
 import TodoEntry from "../../todo/todoEntry/TodoEntry.jsx";
 import TodoBtnWrap from "../../todo/todoBtnWrap/TodoBtnWrap.jsx";
+
 
 function Todo({ today, unfinished }) {
   const todayTasks = today.map(t => (
@@ -13,7 +20,13 @@ function Todo({ today, unfinished }) {
     <TodoEntry key={u.id} category={u.category} title={u.title} col={u.color} />
   ));
 
-  const selectedDate = "선택한 날짜";
+  const [selectedDate, setSelectedDate] = useState(
+    moment().format("YYYY년 M월 D일")
+  );
+  const getSelectedDate = date => {
+    setSelectedDate(moment(date).format("YYYY년 M월 D일"));
+  };
+
   const unfinishedDescription = "아직 완료되지 않았어요";
 
   return (
@@ -23,6 +36,9 @@ function Todo({ today, unfinished }) {
        <TodoBtnWrap/>
       <s.TodoContentsWrapper>
         {/* 캘린더 */}
+        <TeamCalendar $getSelectedDate={getSelectedDate} />
+        {/* 캘린더 */}
+
         <s.TodoListsWrapper>
           <s.Today>
             <s.TodayDate>{selectedDate}</s.TodayDate>
