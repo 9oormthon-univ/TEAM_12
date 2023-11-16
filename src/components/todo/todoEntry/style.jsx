@@ -1,8 +1,8 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-import colors from "../../../style/theme";
 
 export const s = {
-  TodoEntryWrapper: styled.div`
+  TodoEntryWrapper: styled(Link)`
     display: flex;
     padding: 1.25rem;
     align-items: flex-start;

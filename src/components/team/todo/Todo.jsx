@@ -12,11 +12,11 @@ import TodoEntry from "./../../todo/todoEntry/TodoEntry";
 
 function Todo({ today, unfinished }) {
   const todayTasks = today.map(t => (
-    <TodoEntry key={t.id} category={t.category} title={t.title} col={t.color} />
+    <TodoEntry key={t.todoId} todoInfo = {t}   />
   ));
 
   const unfinishedTasks = unfinished.map(u => (
-    <TodoEntry key={u.id} category={u.category} title={u.title} col={u.color} />
+    <TodoEntry key={u.todoId} todoInfo = {u}   />
   ));
 
   const [selectedDate, setSelectedDate] = useState(
