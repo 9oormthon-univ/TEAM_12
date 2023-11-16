@@ -18,72 +18,105 @@ function Team() {
 
   const TodayLists = [
     {
-      id: 1,
-      category: "FE 개발 1차 마감",
-      title: "Calendar Component",
+      todoId: 1,
+      goalId:3,
+      goalContent: "FE 개발 1차 마감",
+      todoContent: "Calendar Component",
+      todoManagerId: 1,
+      todoManagerNickName: '이종범',
       color: "blue"
     },
     {
-      id: 2,
-      category: "FE 개발 1차 마감",
-      title: "Todo Component",
+      todoId: 2,
+      goalId:2,
+      goalContent: "FE 개발 1차 마감",
+      todoContent: "Todo Component",
+      todoManagerId: 2,
+      todoManagerNickName: '강민주',
       color: "green"
     },
     {
-      id: 3,
-      category: "FE 개발 1차 마감",
-      title: "TeamPage member 초...",
+      todoId: 3,
+      goalId:4,
+      goalContent: "FE 개발 1차 마감",
+      todoContent: "TeamPage member 초...",
+      todoManagerId: 2,
+      todoManagerNickName: '심서현',
       color: "blue"
     },
     {
-      id: 4,
-      category: "BE 개발 1차 마감",
-      title: "나의 todo Filter 기능",
+      todoId: 4,
+      goalId:5,
+      goalContent: "BE 개발 1차 마감",
+      todoContent: "나의 todo Filter 기능",
+      todoManagerId: 4,
+      todoManagerNickName: '박철민',
       color: "purple"
     },
     {
-      id: 5,
-      category: "BE 개발 1차 마감",
-      title: "구름 캐릭터 디자인",
+      todoId: 5,
+      goalId:6,
+      goalContent: "BE 개발 1차 마감",
+      todoContent: "구름 캐릭터 디자인",
+      todoManagerId: 3,
+      todoManagerNickName: '신유수',
       color: "yellow"
     },
     {
-      id: 6,
-      category: "BE 개발 1차 마감",
-      title: "디자인 1차 피드백",
+      todoId: 6,
+      goalId:1,
+      goalContent: "BE 개발 1차 마감",
+      todoContent: "디자인 1차 피드백",
+      todoManagerId: 5,
+      todoManagerNickName: '강희진',
       color: "orange"
     }
   ];
 
   const UnfinishedLists = [
     {
-      id: 1,
-      category: "FE 개발 1차 마감",
-      title: "도메인 구매하기",
+      todoId: 1,
+      goalId:2,
+      goalContent: "FE 개발 1차 마감",
+      todoContent: "도메인 구매하기",
+      todoManagerId: 2,
+      todoManagerNickName: '강민주',
       color: "blue"
     },
     {
-      id: 2,
-      category: "FE 개발 1차 마감",
-      title: "Progress 디자인 수정 반영",
+      todoId: 2,
+      goalId:3,
+      goalContent: "FE 개발 1차 마감",
+      todoContent: "Progress 디자인 수정 반영",
+      todoManagerId: 1,
+      todoManagerNickName: '심서현',
       color: "green"
     },
     {
-      id: 3,
-      category: "BE 개발 1차 마감",
-      title: "CI/CD 파이프라인 구축",
+      todoId: 3,
+      goalId:10,
+      goalContent: "BE 개발 1차 마감",
+      todoContent: "CI/CD 파이프라인 구축",
+      todoManagerId: 3,
+      todoManagerNickName: '박철민',
       color: "orange"
     },
     {
-      id: 4,
-      category: "BE 개발 1차 마감",
-      title: "Cors 오류 수정",
+      todoId: 4,
+      goalId:11,
+      goalContent: "BE 개발 1차 마감",
+      todoContent: "Cors 오류 수정",
+      todoManagerId: 5,
+      todoManagerNickName: '신유수',
       color: "purple"
     },
     {
-      id: 5,
-      category: "디자인 마감",
-      title: "MainPage 디자인",
+      todoId: 5,
+      goalId:7,
+      goalContent: "디자인 마감",
+      todoContent: "MainPage 디자인",
+      todoManagerId: 1,
+      todoManagerNickName: '강희진',
       color: "yellow"
     }
   ];
