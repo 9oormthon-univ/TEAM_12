@@ -2,6 +2,7 @@ import { s } from "./style.jsx";
 import TeamCommonAlert from "./../teamCommon/TeamCommonAlert";
 import TeamCommonSectionTitle from "../teamCommon/TeamCommonSectionTitle.jsx";
 import TodoEntry from "../../todoEntry/TodoEntry.jsx";
+import TeamCalendar from "../../teamCalendar/teamCalendar.jsx";
 
 function Todo({ today, unfinished }) {
   const todayTasks = today.map(t => (
@@ -21,7 +22,7 @@ function Todo({ today, unfinished }) {
       <TeamCommonAlert />
       <s.TodoButtonsWrapper></s.TodoButtonsWrapper>
       <s.TodoContentsWrapper>
-        {/* 캘린더 */}
+        <TeamCalendar />
         <s.TodoListsWrapper>
           <s.Today>
             <s.TodayDate>{selectedDate}</s.TodayDate>

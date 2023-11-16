@@ -2,6 +2,16 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 
+@font-face {
+  font-family: 'Pretendard-Medium';
+  src: url('/fonts/Pretendard-Medium.woff2') format('woff2'), url('/fonts/Pretendard-Medium.woff2') format('woff');
+}
+
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('/fonts/Pretendard-Regular.woff2') format('woff2'), url('/fonts/Pretendard-Regular.woff2') format('woff');
+}
+
   :root {
     --vh: 100%;
     background-color: lightgrey;
@@ -13,6 +23,9 @@ export const GlobalStyle = createGlobalStyle`
 
    }
 
+   html{
+    font-family: "Pretnedard-Medium";
+   }
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, 
   a, abbr, acronym, address, big, cite, 
