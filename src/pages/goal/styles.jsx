@@ -34,5 +34,44 @@ export const s = {
     flex-shrink: 0;
     align-self: stretch;
     background: ${p => p.theme.colors.white};
+  `,
+  NavBarWrapper: styled.nav`
+    display: flex;
+    padding-top: 1.5rem;
+    align-items: flex-end;
+    align-self: stretch;
+  `,
+  NavBtnWrapper: styled.ul`
+    display: flex;
+    flex-direction: row;
+  `,
+  NavBtn: styled.button`
+    display: flex;
+    width: 5rem;
+    height: 2rem;
+    border-bottom: 0.2rem solid
+      ${props =>
+        props.selected ? props.theme.colors.black : props.theme.colors.gray1};
+    flex-direction: column;
+    vertical-align: center;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    ${props =>
+      props.selected
+        ? `color: ${props.theme.colors.black}`
+        : `color: ${props.theme.colors.gray1}`}
+  `,
+  NavLine: styled.div`
+    width: 100%;
+    height: 0.2rem;
+    background: ${p => p.theme.colors.gray1};
+  `,
+  ViewWrapper: styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1 0 0;
+    align-self: stretch;
   `
 };
