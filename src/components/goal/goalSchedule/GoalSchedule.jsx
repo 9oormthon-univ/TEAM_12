@@ -1,9 +1,15 @@
+import { useDispatch, useSelector } from "react-redux";
+import { modalAction } from "../../../store/modal/modalSlice";
 import {s} from "./style";
 
 import TeamCommonAlert from "../../team/teamCommon/TeamCommonAlert";
 import GoalColumn from "../goalColumn/GoalColumn";
+import CenterModal from "../../modals/centerModal/CenterModal";
 
 function GoalSchedule () {
+
+    const dispatch = useDispatch();
+    const {showModal} = useSelector(s => s.modal);
 
     const goals = [
         {
@@ -33,12 +39,16 @@ function GoalSchedule () {
         return `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일`
     }
 
-    const showMakeGoalModal = () => {
-        console.log('얍!')
+    const addInfo =  [ startDay , endDay ].map(e=> e.toISOString().split('T')[0])
+
+
+    const showMakeGoalModal = () =>{
+        dispatch(modalAction.setShowModal({type:'maker',title:'Goal',addInfo}))
     }
 
     return(
         <>
+            {showModal && <CenterModal/> }
             <TeamCommonAlert/>
             <s.GoalDurationDiv>
                 <s.GoalDurationText>{dateStringMaker(startDay)}</s.GoalDurationText>
