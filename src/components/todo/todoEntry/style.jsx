@@ -22,6 +22,9 @@ export const s = {
     border-radius: 0.3125rem;
     cursor: pointer;
     background: ${props => props.theme.colors.gray0};
+    &:ischecked {
+      background: red;
+    }
   `,
   TodoContentsWrapper: styled.div`
     display: flex;
@@ -29,6 +32,22 @@ export const s = {
     align-items: flex-start;
     gap: 0.3125rem;
     flex: 1 0 0;
+    overflow: auto;
+    padding: 0.2rem;
+    &::-webkit-scrollbar {
+      height: 0.5rem;
+    }
+    &::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 1rem;
+      background-color: ${props => props.theme.colors.gray1};
+    }
+    &::-webkit-scrollbar-button {
+      width: 0;
+      height: 0;
+    }
   `,
   TodoCategory: styled.span`
     display: flex;

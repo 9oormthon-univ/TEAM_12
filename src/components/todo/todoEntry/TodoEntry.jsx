@@ -1,8 +1,11 @@
 import { s } from "./style.jsx";
 
-function TodoEntry({ todoInfo : i }) {
+function TodoEntry({ todoInfo: i }) {
   return (
-    <s.TodoEntryWrapper to={`goalId/${i.goalId}/todoId/${i.todoId}`} $color={i.color}>
+    <s.TodoEntryWrapper
+      to={`goalId/${i.goalId}/todoId/${i.todoId}`}
+      $color={i.color}
+    >
       <s.TodoChkBox />
       <s.TodoContentsWrapper>
         <s.TodoCategory>{i.goalContent}</s.TodoCategory>
