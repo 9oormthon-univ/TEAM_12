@@ -2,7 +2,6 @@ import { s } from "./style.jsx";
 import TeamCommonAlert from "./../teamCommon/TeamCommonAlert";
 import TeamCommonSectionTitle from "../teamCommon/TeamCommonSectionTitle.jsx";
 
-import TodoEntry from "../../todoEntry/TodoEntry.jsx";
 import TeamCalendar from "../../teamCalendar/teamCalendar.jsx";
 import { useState } from "react";
 import moment from "moment";
