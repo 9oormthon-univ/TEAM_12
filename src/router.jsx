@@ -6,6 +6,7 @@ import Team from "./pages/team/Team";
 import { formSubmit } from "./api/resource/action";
 import Goal from "./pages/goal/Goal";
 import Login from "./pages/login/Login";
+import SignUP from "./pages/login/SignUp";
 
 const router = createBrowserRouter([
   {
@@ -20,7 +21,8 @@ const router = createBrowserRouter([
         id: "team",
         children: [{ path: "goalId/:goalId", element: <Goal /> }]
       },
-      { path: "/login", element: <Login /> }
+      { path: "/login", element: <Login /> },
+      { path: "/signup", element: <SignUP /> }
     ],
     errorElement: <NotFound />
   }

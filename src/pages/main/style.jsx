@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 
 export const MainPageWrapper = styled.div`
@@ -24,11 +25,50 @@ export const MainWrapper = styled.div`
 `;
 
 export const UserContent = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
   font-size: 1.125rem;
   padding-bottom: 1.25rem;
   margin-bottom: 1.25rem;
   border-bottom: 1px solid;
   border-color: ${props => props.theme.colors.gray1};
+
+  div {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    padding-right: 0.3125rem;
+  }
+  img {
+    width: 1.5rem;
+    height: 1.5rem;
+    cursor: pointer;
+  }
+`;
+
+export const LoginContent = styled(Link)`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  font-size: 1.125rem;
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid;
+  border-color: ${props => props.theme.colors.gray1};
+
+  div {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    padding-right: 0.3125rem;
+  }
+  img {
+    width: 1.5rem;
+    height: 1.5rem;
+    cursor: pointer;
+  }
 `;
 //---------- 네브바
 export const MainNavWrapper = styled.div`

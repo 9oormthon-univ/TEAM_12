@@ -1,19 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as S from "./style";
-
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-import axios from "axios";
-import { useRecoilState } from "recoil";
-import { userState } from "../../context/authState";
 
-function Login() {
+function SignUp() {
   const navigate = useNavigate();
-  const [userInfo, setUserInfo] = useRecoilState(userState);
   const [loginData, setLoginData] = useState({
+    name: "",
     id: "",
-    pw: ""
+    pw: "",
+    pwCheck: ""
   });
+
+  const [isPwCheck, setIsPwCheck] = useState(true);
+
+  useEffect(() => {
+    if (loginData.pw != loginData.pwCheck) {
+      setIsPwCheck(false);
+    } else {
+      setIsPwCheck(true);
+    }
+  }, [loginData]);
 
   const handleInputChange = event => {
     const { name, value } = event.target;
@@ -25,10 +31,10 @@ function Login() {
 
   const handleSubmit = async event => {
     event.preventDefault();
-    const { id, pw } = loginData;
+    const { name, id, pw, pwCheck } = loginData;
 
-    if (id === "" || pw === "") {
-      alert("아이디와 비밀번호를 입력해주세요!");
+    if (id === "" || pw === "" || name === "" || pwCheck === "") {
+      alert("모든 정보를 입력해주세요!");
       return;
     }
 
@@ -65,32 +71,29 @@ function Login() {
     //   alert("비밀번호를 다시 입력해주세요!");
     // }
 
-    setUserInfo({
-      id: id,
-      name: "서현"
-      //   accessToken: accessToken,
-      //   refreshToken: refreshToken
-    });
-
-    localStorage.setItem(
-      "userInfo",
-      JSON.stringify({
-        id: id,
-        name: "서현"
-        // accessToken: accessToken,
-        // refreshToken: refreshToken
-      })
-    );
-
-    navigate("/");
+    alert("회원가입에 성공하셨습니다!");
+    navigate("/login");
   };
+
   return (
     <S.LoginWrapper>
       <S.Logincontent onSubmit={handleSubmit}>
         <S.LoginInputWrapper>
+          <S.LoginLabel>회원명</S.LoginLabel>
           <S.LoginInput
             required
-            name="id"
+            name={"name"}
+            placeholder="회원명을 입력해주세요."
+            value={loginData.name}
+            onChange={handleInputChange}
+          />
+        </S.LoginInputWrapper>
+
+        <S.LoginInputWrapper>
+          <S.LoginLabel>아이디</S.LoginLabel>
+          <S.LoginInput
+            required
+            name={"id"}
             placeholder="아이디를 입력해주세요."
             value={loginData.id}
             onChange={handleInputChange}
@@ -98,21 +101,34 @@ function Login() {
         </S.LoginInputWrapper>
 
         <S.LoginInputWrapper>
+          <S.LoginLabel>비밀번호</S.LoginLabel>
           <S.LoginInput
             required
-            name="pw"
-            placeholder="비밀번호를 입력해주세요."
-            value={loginData.pw}
             type="password"
+            name={"pw"}
+            placeholder="비밀번호를 입력해주세요"
+            value={loginData.pw}
             onChange={handleInputChange}
           />
+          <S.LoginInput
+            required
+            type="password"
+            name={"pwCheck"}
+            placeholder="비밀번호를 확인해주세요."
+            value={loginData.pwCheck}
+            onChange={handleInputChange}
+          />
+          {isPwCheck ? (
+            <></>
+          ) : (
+            <S.LoginError>비밀번호를 정확하게 입력해주세요.</S.LoginError>
+          )}
         </S.LoginInputWrapper>
 
-        <S.LoginButton>로그인</S.LoginButton>
+        <S.LoginButton>회원가입</S.LoginButton>
       </S.Logincontent>
-      <S.SignUpButton to="/signup">회원가입</S.SignUpButton>
     </S.LoginWrapper>
   );
 }
 
-export default Login;
+export default SignUp;
