@@ -5,6 +5,7 @@ import NotFound from './pages/notFound/NotFound'
 import Team from './pages/team/Team'
 import { formSubmit } from "./api/resource/action";
 import Goal from "./pages/goal/Goal";
+import TodoPage from "./pages/todo/TodoPage";
 
 const router = createBrowserRouter([
   {
@@ -14,7 +15,15 @@ const router = createBrowserRouter([
       { path: "/", element: <Main />, action:formSubmit},
       { path: "teamId/:teamId", element: <Team /> ,action:formSubmit, id:'team' ,
         children :[
-          {path :'goalId/:goalId', element:<Goal/>}
+          {
+            path :'goalId/:goalId', element:<Goal/>, id:'goal', children:
+            [
+              {
+                path :'todoId/:todoId',element:<TodoPage/> ,id:'todo'
+              }
+            ]
+          },
+          
         ]}
     ],
     errorElement: <NotFound />
