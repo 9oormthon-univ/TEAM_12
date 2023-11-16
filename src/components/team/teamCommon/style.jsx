@@ -74,5 +74,45 @@ export const s = {
     font-size: 0.625rem;
     font-weight: 400;
     color: ${p => p.theme.colors.gray2};
+  `,
+  CommentPostDiv: styled.div`
+    display: flex;
+    width: 28.75rem;
+    align-items: flex-start;
+    gap: 0.625rem;
+  `,
+
+  CommentInput: styled.input`
+    display: flex;
+    padding: 1.25rem;
+    align-items: flex-start;
+    gap: 0.625rem;
+    flex: 1 0 0;
+    border-radius: 0.625rem;
+    background: ${p => p.theme.colors.gray0};
+    color: ${p => p.theme.colors.gray4};
+    font-family: "Pretendard-Medium";
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  `,
+
+  CommentBtn: styled.button`
+    display: flex;
+    padding: 0.8125rem 0.625rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    align-self: stretch;
+    border-radius: 0.625rem;
+    border: 1px solid ${p => p.theme.colors.gray2};
+    color: ${p => p.theme.colors.gray2};
+    font-family: "Pretendard-Medium";
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
   `
 };
