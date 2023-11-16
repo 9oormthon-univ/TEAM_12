@@ -1,7 +1,6 @@
 import { s } from "./style.jsx";
 
 function TodoEntry({ todoInfo : i }) {
-  console.log(i)
   return (
     <s.TodoEntryWrapper to={`goalId/${i.goalId}/todoId/${i.todoId}`} $color={i.color}>
       <s.TodoChkBox />
