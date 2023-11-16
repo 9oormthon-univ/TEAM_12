@@ -56,7 +56,7 @@ export const s = {
   UnfinishedDescription: styled.span`
     color: ${props => props.theme.colors.black};
     text-align: center;
-    font-family: Pretendard;
+    font-family: "Pretendarad-Medium";
     font-size: 1.25rem;
     font-style: normal;
     font-weight: bold;

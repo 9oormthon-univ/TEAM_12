@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import colors from "./../../style/theme";
+import colors from "../../../style/theme";
 
 export const s = {
   TodoEntryWrapper: styled.div`
     display: flex;
-    padding: 1rem;
+    padding: 1.25rem;
     align-items: flex-start;
     gap: 0.625rem;
     align-self: stretch;
@@ -26,27 +26,9 @@ export const s = {
   TodoContentsWrapper: styled.div`
     display: flex;
     flex-direction: column;
-    overflow: auto;
     align-items: flex-start;
     gap: 0.3125rem;
-    padding: 0.2rem;
-
-    &::-webkit-scrollbar {
-      height: 0.5rem;
-    }
-
-    &::-webkit-scrollbar-track {
-      background-color: transparent;
-    }
-    &::-webkit-scrollbar-thumb {
-      border-radius: 1rem;
-      background-color: ${props => props.theme.colors.gray1};
-    }
-
-    &::-webkit-scrollbar-button {
-      width: 0;
-      height: 0;
-    }
+    flex: 1 0 0;
   `,
   TodoCategory: styled.span`
     display: flex;
@@ -62,10 +44,7 @@ export const s = {
     color: ${props => props.theme.colors.black};
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-family: Pretendard;
+    font-family: "Pretendarad-Medium";
     font-size: 1rem;
-    font-style: normal;
-    font-weight: bold;
-    line-height: 1.25rem;
   `
 };

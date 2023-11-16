@@ -4,6 +4,7 @@ import TeamPageHeader from "../../components/team/teamPageHeader/TeamPageHeader"
 import TeamNav from "../../components/team/teamNav/TeamNav";
 import Todo from "../../components/team/todo/Todo.jsx";
 import GoalScheduleWrapper from '../../components/goal/goalScheduleWrap/GoalScheduleWrapper.jsx'
+import { Outlet } from "react-router-dom";
 
 function Team() {
   const TeamNames = [
@@ -88,20 +89,25 @@ function Team() {
   ];
 
   return (
-    <s.Team>
-      <TeamPageHeader
-        name={"가치구름"}
-        descript={"협업 기록을 통한 구름 키우기 서비스"}
-      />
-      <s.Line />
-      <s.TeamPageBody>
-        <TeamNav logo={""} teams={TeamNames} />
-        <s.TeamPageContent>
-          <GoalScheduleWrapper/>
-          <Todo today={TodayLists} unfinished={UnfinishedLists} />
-        </s.TeamPageContent>
-      </s.TeamPageBody>
-    </s.Team>
+    <>
+      <main>
+        <Outlet/>
+      </main>
+      <s.Team>
+        <TeamPageHeader
+          name={"가치구름"}
+          descript={"협업 기록을 통한 구름 키우기 서비스"}
+        />
+        <s.Line />
+        <s.TeamPageBody>
+          <TeamNav logo={""} teams={TeamNames} />
+          <s.TeamPageContent>
+            <GoalScheduleWrapper/>
+            <Todo today={TodayLists} unfinished={UnfinishedLists} />
+          </s.TeamPageContent>
+        </s.TeamPageBody>
+      </s.Team>
+    </>
   );
 }
 
