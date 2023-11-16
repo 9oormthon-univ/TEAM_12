@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import * as S from "./style";
 import TeamPageBtn from "../../components/main/teamPageBtn/TeamPageBtn";
 import AddNewTeamBtn from "../../components/main/addNewTeamBtn/AddNewTeamBtn";
+import { userState } from "../../context/authState";
+import { useRecoilState } from "recoil";
 
 function Main() {
   const [currentNav, setCurrentNav] = useState("Proceeding");
 
+  const [userInfo, setUserInfo] = useRecoilState(userState);
   return (
     <S.MainPageWrapper>
       <S.MainTitle>가치구름</S.MainTitle>
