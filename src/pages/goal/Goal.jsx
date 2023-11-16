@@ -7,6 +7,7 @@ import { useState } from "react";
 import { s } from "./styles";
 import TimelineView from "../../components/goalDetail/timelineView/TimelineView.jsx";
 import TodoView from "./../../components/goalDetail/todoView/TodoView";
+import TeamCommonCommentPost from "../../components/team/teamCommon/TeamCommonCommentPost.jsx";
 
 function Goal() {
   const param = useParams();
@@ -77,6 +78,7 @@ function Goal() {
               {activeTab === "Timeline" && <TimelineView />}
               {activeTab === "Todo" && <TodoView todoList={DUMMY_TODOLIST} />}
             </s.ViewWrapper>
+            <TeamCommonCommentPost />
           </s.GoalPageWrapper>
         )}
         <main>
