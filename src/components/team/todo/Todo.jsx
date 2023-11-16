@@ -2,14 +2,12 @@ import { s } from "./style.jsx";
 import TeamCommonAlert from "./../teamCommon/TeamCommonAlert";
 import TeamCommonSectionTitle from "../teamCommon/TeamCommonSectionTitle.jsx";
 
-import TodoEntry from "../../todoEntry/TodoEntry.jsx";
 import TeamCalendar from "../../teamCalendar/teamCalendar.jsx";
 import { useState } from "react";
 import moment from "moment";
 
-import TodoEntry from "../../todo/todoEntry/TodoEntry.jsx";
 import TodoBtnWrap from "../../todo/todoBtnWrap/TodoBtnWrap.jsx";
-
+import TodoEntry from "./../../todo/todoEntry/TodoEntry";
 
 function Todo({ today, unfinished }) {
   const todayTasks = today.map(t => (
@@ -33,7 +31,7 @@ function Todo({ today, unfinished }) {
     <s.TodoWrapper>
       <TeamCommonSectionTitle title="Todo" />
       <TeamCommonAlert />
-       <TodoBtnWrap/>
+      <TodoBtnWrap />
       <s.TodoContentsWrapper>
         {/* 캘린더 */}
         <TeamCalendar $getSelectedDate={getSelectedDate} />
