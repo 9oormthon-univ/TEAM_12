@@ -4,12 +4,12 @@ export const GlobalStyle = createGlobalStyle`
 
 @font-face {
   font-family: 'Pretendard-Medium';
-  src: url('/fonts/Pretendard-Medium.woff2') format('woff2'), url('/fonts/Pretendard-Medium.woff2') format('woff');
+  src: url('/fonts/Pretendard-Medium.woff') format('woff'), url('/fonts/Pretendard-Medium.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'Pretendard-Regular';
-  src: url('/fonts/Pretendard-Regular.woff2') format('woff2'), url('/fonts/Pretendard-Regular.woff2') format('woff');
+  src: url('/fonts/Pretendard-Regular.woff') format('woff'), url('/fonts/Pretendard-Regular.woff2') format('woff2');
 }
 
   :root {
@@ -24,7 +24,8 @@ export const GlobalStyle = createGlobalStyle`
    }
 
    html{
-    font-family: "Pretnedard-Medium";
+    font-family: "Pretnedard-Regular";
+    font-size: 16px;
    }
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, 

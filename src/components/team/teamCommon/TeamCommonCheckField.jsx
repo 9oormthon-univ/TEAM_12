@@ -12,7 +12,7 @@ function TeamCommonCheckField({ text }) {
 
   return (
     <s.CheckField>
-      <s.ChkBox checked={isChecked} onClick={CheckBoxHandler} />
+      <s.ChkBox checked={isChecked} onChange={CheckBoxHandler} />
       <s.CheckText>{text}</s.CheckText>
     </s.CheckField>
   );

@@ -70,7 +70,7 @@ export const s = {
       background: red;
     }
   `,
-  CheckText: styled.label.attrs({ for: "agree" })`
+  CheckText: styled.label.attrs({ htmlFor: "agree" })`
     font-size: 0.625rem;
     font-weight: 400;
     color: ${p => p.theme.colors.gray2};

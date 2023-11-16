@@ -1,5 +1,8 @@
+import TeamCommonAlert from "../../components/team/teamCommon/TeamCommonAlert.jsx";
+import Top from "./../../components/goalDetail/top/Top.jsx";
+import { s } from "./styles";
+import GoalInfo from "./../../components/goalDetail/goalInfo/GoalInfo";
 import { Outlet, useParams } from 'react-router-dom'
-import {s} from './styles'
 
 function Goal(){
 
@@ -7,17 +10,20 @@ function Goal(){
 
   return(
     <>
-      <s.Backdrop to={'..'}/>
+      <s.Backdrop to={".."} />
       <s.Content>
-        {!param.todoId && <h1>goal</h1>}
+      { !param.todoId && 
+        <s.GoalPageWrapper>
+          <TeamCommonAlert />
+          <Top />
+          <GoalInfo />
+        </s.GoalPageWrapper> }
         <main>
           <Outlet/>
         </main>
       </s.Content>
     </>
-
-  )
-
+  );
 }
 
-export default Goal
+export default Goal;

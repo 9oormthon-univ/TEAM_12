@@ -1,43 +1,97 @@
-import React from "react";
+import React, { useState } from "react";
 import * as S from "./style";
 import TeamPageBtn from "../../components/main/teamPageBtn/TeamPageBtn";
 import AddNewTeamBtn from "../../components/main/addNewTeamBtn/AddNewTeamBtn";
+import { userState } from "../../context/authState";
+import { useRecoilState } from "recoil";
+import { useNavigate } from "react-router-dom";
 
 function Main() {
+  const [currentNav, setCurrentNav] = useState("Proceeding");
+  const [userInfo, setUserInfo] = useRecoilState(userState);
+
+  const handleLogout = async () => {
+    // try {
+    //   const accessToken = userInfo.accessToken;
+    //   const headers = {
+    //     Authorization: `Bearer ${accessToken}` // Bearer Token 설정
+    //   };
+    //   const response = await axios.post("auth/logout/", null, {
+    //     headers
+    //   });
+
+    //   if (response.status === 200) {
+    //     setUserInfo(null);
+    //     // 로컬 스토리지에서 로그인 정보 삭제
+    //     localStorage.removeItem("userInfo");
+    //     // 로그인 페이지로 이동
+    //     navigate("/");
+    //   }
+    // } catch (error) {
+    //   console.error("Error logging out:", error);
+    //   alert("로그아웃 실패했습니다.");
+    // }
+
+    setUserInfo(null);
+    alert("로그아웃 되었습니다!");
+    localStorage.removeItem("userInfo");
+  };
+
   return (
-    <>
-      <S.MainTitle>메인페이지</S.MainTitle>
-      <div style={{ padding: "40px" }}>
-        코드 규약 : 추후 삭제 예정
-        <br /> 폴더명 - 소문자/ 컴포넌트명 - 대문자로 시작합니다 추후 배포할때
-        경로 꼬일거 대비해서 맞추면 좋을 것 같아요.
-        <br />
-        색깔 쓸 일 있으면, color: {"$"}
-        {"{"}props ={">"} props.theme.colors.gray2
-        {"}"}; 이렇게 써주시면 됩니다. gray2 에 들어갈 색은 피그마랑 똑같이
-        설정해뒀어요
-        <br />
-        나중에 코드 재활용을 위해 html태그 사용은 지양합시다! 전부
-        컴포넌트&스타일 태그먹여서 사용하면 될 것 같아요 컴포넌트단위별로
-        피그마에 나눠놨으니 참고 부탁드려요
-      </div>
+    <S.MainPageWrapper>
+      <S.MainTitle>가치구름</S.MainTitle>
+
       <S.MainWrapper>
-        {/* 네브바 나중에 컴포넌트로 분리해요! */}
         <S.MainNavWrapper>
-          <S.MainNavBtn>버튼1</S.MainNavBtn>
-          <S.MainNavBtn>버튼2</S.MainNavBtn>
+          {userInfo ? (
+            <S.UserContent>
+              <div>안녕하세요 {userInfo.name}님!</div>
+              <img src="/Logout.svg" onClick={handleLogout} />
+            </S.UserContent>
+          ) : (
+            <S.LoginContent to="/login">
+              <div>로그인하세요!</div>
+              <img src="/Right.svg" />
+            </S.LoginContent>
+          )}
+
+          <S.MainNavBtn
+            $isSelected={"Proceeding" == currentNav}
+            onClick={() => setCurrentNav("Proceeding")}
+          >
+            진행중인 프로젝트
+          </S.MainNavBtn>
+          <S.MainNavBtn
+            $isSelected={"Done" == currentNav}
+            onClick={() => setCurrentNav("Done")}
+          >
+            완료한 프로젝트
+          </S.MainNavBtn>
         </S.MainNavWrapper>
 
         <S.MainContentWrapper>
-          <AddNewTeamBtn/>
-          <TeamPageBtn teamId={1} />
-          <TeamPageBtn teamId={1} />
-          <TeamPageBtn teamId={1} />
-          <TeamPageBtn teamId={1} />
-          <TeamPageBtn teamId={1} />
+          {currentNav == "Proceeding" ? (
+            <>
+              <AddNewTeamBtn />
+              <TeamPageBtn teamId={1} />
+              <TeamPageBtn teamId={1} />
+              <TeamPageBtn teamId={1} />
+              <TeamPageBtn teamId={1} />
+              <TeamPageBtn teamId={1} />
+            </>
+          ) : (
+            <>
+              <TeamPageBtn teamId={1} />
+              <TeamPageBtn teamId={1} />
+              <TeamPageBtn teamId={1} />
+              <TeamPageBtn teamId={1} />
+              <TeamPageBtn teamId={1} />
+              <TeamPageBtn teamId={1} />
+            </>
+          )}
         </S.MainContentWrapper>
       </S.MainWrapper>
-    </>
+    </S.MainPageWrapper>
   );
 }
 
