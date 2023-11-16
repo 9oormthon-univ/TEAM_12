@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 
 export const s = {
@@ -8,7 +9,7 @@ export const s = {
         align-items: center;
         height : fit-content;
     `,
-    Goal : styled.div`
+    Goal : styled(Link)`
         display: flex;
         width: ${({$width}) => $width}rem;
         position:relative;
