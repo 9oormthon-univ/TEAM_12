@@ -103,6 +103,14 @@ function Memori() {
         <s.TeamPageBody>
           <TeamNav logo={""} teams={TeamNames} />
           <s.TeamPageContent>
+            <s.MemoriPageHeaderWrapper>
+              <s.MemoriPageHeaderTitle>
+                총 <span>230건</span>의 Todo가 있었어요.
+              </s.MemoriPageHeaderTitle>
+              <s.MemoriPageHeaderSubtitle>
+                Todo 참여율을 확인해보세요!
+              </s.MemoriPageHeaderSubtitle>
+            </s.MemoriPageHeaderWrapper>
             <TodoCount />
           </s.TeamPageContent>
         </s.TeamPageBody>
