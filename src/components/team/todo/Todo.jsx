@@ -9,6 +9,7 @@ import moment from "moment";
 import TodoBtnWrap from "../../todo/todoBtnWrap/TodoBtnWrap.jsx";
 import TodoEntry from "./../../todo/todoEntry/TodoEntry";
 
+
 function Todo({ today, unfinished }) {
   const todayTasks = today.map(t => (
     <TodoEntry key={t.id} category={t.category} title={t.title} col={t.color} />
