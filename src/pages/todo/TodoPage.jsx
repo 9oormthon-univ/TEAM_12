@@ -58,13 +58,17 @@ function TodoPage() {
   };
 
   return (
-    <Form method="post">
+    <>
       <s.Content>
+        {/* 헤더 */}
         <s.Header>
           <TeamCommonCheckField text={"Todo를 달성해보아요"} />
           {endDateMaker(t.todoEndDate)}
         </s.Header>
         <s.Title>{t.todoContent}</s.Title>
+        {/* 헤더 */}
+
+        {/* 내용 */}
         <s.CommentListDiv>
           <s.CommentListWrapper>
             {t.commentList.map(e => (
@@ -72,9 +76,12 @@ function TodoPage() {
             ))}
           </s.CommentListWrapper>
         </s.CommentListDiv>
-        <TeamCommonCommentPost />
+        {/* 내용 */}
+        <Form style={{ width: "100%" }} method="post">
+          <TeamCommonCommentPost />
+        </Form>
       </s.Content>
-    </Form>
+    </>
   );
 }
 
