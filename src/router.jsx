@@ -3,7 +3,7 @@ import App from "./App";
 import Main from "./pages/main/Main";
 import NotFound from "./pages/notFound/NotFound";
 import Team from "./pages/team/Team";
-import { formSubmit } from "./api/resource/action";
+import { createGoalTodoMem , createTeam } from "./api/resource/action";
 import Goal from "./pages/goal/Goal";
 import Login from "./pages/login/Login";
 import SignUP from "./pages/login/SignUp";
@@ -15,11 +15,11 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
     children: [
-      { path: "/", element: <Main />, action: formSubmit },
+      { path: "/", element: <Main />, action: createTeam },
       {
         path: "teamId/:teamId",
         element: <Team />,
-        action: formSubmit,
+        action: createGoalTodoMem,
         id: "team",
         children: [
           {
