@@ -14,11 +14,8 @@ export const s = {
   `,
   AlertText: styled.span`
     color: ${p => p.theme.colors.gray4};
-    font-family: Pretendard;
+
     font-size: 0.75rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
   `,
   SectionTitleWrapper: styled.div`
     display: flex;
@@ -37,11 +34,8 @@ export const s = {
   `,
   SectionTitle: styled.span`
     color: ${p => p.theme.colors.black};
-    font-family: Pretendard;
+
     font-size: 1.125rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
   `,
   SectionTitleLine: styled.div`
     background: ${p => p.theme.colors.gray1};

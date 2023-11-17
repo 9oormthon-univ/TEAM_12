@@ -23,11 +23,8 @@ export const s = {
     gap: 0.3125rem;
     align-self: stretch;
     color: ${p => p.theme.colors.gray2};
-    font-family: Pretendard;
+
     font-size: 0.625rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
   `,
   CommentLike: styled.div`
     width: 100%;
