@@ -7,7 +7,6 @@ function TimelineView({ timelineData, goalName }) {
 
   const processGoalComment = timelineData.goalCommentList.map(comment => (
     <s.GoalComment $color={ColorList[comment.commentMemberId]}>
-      {console.log(comment)}
       <s.GoalCommentDate>{comment.createdTime}</s.GoalCommentDate>
       <s.GoalCommentContent>{comment.content}</s.GoalCommentContent>
       <s.GoalCommentFeelingWrapper>"EMPTY"</s.GoalCommentFeelingWrapper>
@@ -16,7 +15,7 @@ function TimelineView({ timelineData, goalName }) {
 
   const processTodo = timelineData.todoCommentList.map(todo => (
     <s.TodoWrapper key={todo.todoId}>
-      <s.TodoBox>
+      <s.TodoBox $color={ColorList[todo.todoManagerMemberId]}>
         {/** 체크박스 */}
         <s.TodoBoxContentWrapper>
           <s.TodoTitle>{goalName}</s.TodoTitle>
@@ -38,16 +37,7 @@ function TimelineView({ timelineData, goalName }) {
 
   return (
     <s.TimelineWrapper>
-      <s.GoalCommentsWrapper>
-        {timelineData.goalCommentList.map(comment => (
-          <s.GoalComment $color={ColorList[comment.commentMemberId]}>
-            {console.log(comment)}
-            <s.GoalCommentDate>{comment.createdTime}</s.GoalCommentDate>
-            <s.GoalCommentContent>{comment.content}</s.GoalCommentContent>
-            <s.GoalCommentFeelingWrapper>"EMPTY"</s.GoalCommentFeelingWrapper>
-          </s.GoalComment>
-        ))}
-      </s.GoalCommentsWrapper>
+      <s.GoalCommentsWrapper>{processGoalComment}</s.GoalCommentsWrapper>
       {processTodo}
     </s.TimelineWrapper>
   );

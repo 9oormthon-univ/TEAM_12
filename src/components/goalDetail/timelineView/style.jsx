@@ -25,7 +25,8 @@ export const s = {
     align-items: flex-start;
     flex: 1 0 0;
     gap: 0.5rem;
-    border-left: 0.5rem solid ${({ $color }) => $color};
+    padding-left: 1.25rem;
+    border-left: 0.2rem solid ${({ $color }) => $color};
   `,
   GoalCommentDate: styled.span`
     color: ${p => p.theme.colors.gray2};
@@ -54,6 +55,8 @@ export const s = {
     align-items: flex-start;
     gap: 0.625rem;
     align-self: stretch;
+    border: 2px solid ${({ $color }) => $color};
+    border-radius: 0.625rem;
   `,
   TodoBoxContentWrapper: styled.div`
     display: flex;
@@ -84,10 +87,12 @@ export const s = {
   `,
   TodoComment: styled.div`
     display: flex;
+    flex-direction: column;
     align-items: flex-start;
     gap: 0.625rem;
     align-self: stretch;
-    border-left: 0.5rem solid ${({ $color }) => $color};
+    padding-left: 1.25rem;
+    border-left: 0.2rem solid ${({ $color }) => $color};
   `,
   TodoCommentContent: styled.span`
     color: ${p => p.theme.colors.gray4};
