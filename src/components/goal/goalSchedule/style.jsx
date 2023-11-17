@@ -41,5 +41,25 @@ export const s = {
     color: ${p => p.theme.colors.white};
 
     font-size: 0.75rem;
+  `,
+  /* ---- Memori 타이틀 ----*/
+
+  MemoriPageHeaderWrapper: styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.875rem;
+  `,
+  MemoriPageHeaderTitle: styled.div`
+    font-size: 2rem;
+    color: ${props => props.theme.colors.black};
+    margin-bottom: 0.625rem;
+    span {
+      font-family: "Pretendard-Medium";
+    }
+  `,
+  MemoriPageHeaderSubtitle: styled.div`
+    color: ${props => props.theme.colors.gray4};
+    font-size: 1rem;
   `
 };

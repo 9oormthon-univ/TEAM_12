@@ -140,6 +140,19 @@ function GoalScheduleContent({
 
   return (
     <>
+      {type == "report" ? (
+        <s.MemoriPageHeaderWrapper>
+          <s.MemoriPageHeaderTitle>
+            총 <span>{goals.length}건</span>의 Goal이 있었어요.
+          </s.MemoriPageHeaderTitle>
+          <s.MemoriPageHeaderSubtitle>
+            Goal의 목표 수행률을 확인해보세요!
+          </s.MemoriPageHeaderSubtitle>
+        </s.MemoriPageHeaderWrapper>
+      ) : (
+        ""
+      )}
+
       <s.GoalDurationDiv>
         <s.GoalDurationText>{dateStringMaker(startDate)}</s.GoalDurationText>
         <s.GoalDurationText>{dateStringMaker(endDate)}</s.GoalDurationText>
