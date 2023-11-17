@@ -3,7 +3,7 @@ import Calendar from "react-calendar";
 import "./Calendar.css"; // css import
 import moment from "moment";
 
-import { API } from "../../api/axios";
+import { API } from "../../../api/axios";
 
 import * as S from "./style";
 
