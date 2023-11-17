@@ -77,9 +77,10 @@ export const s = {
   `,
   CommentPostDiv: styled.div`
     display: flex;
-    width: 28.75rem;
+    width: 100%;
     align-items: flex-start;
     gap: 0.625rem;
+    flex-shrink: 0;
   `,
 
   CommentInput: styled.input`

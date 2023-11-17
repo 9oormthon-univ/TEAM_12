@@ -130,7 +130,7 @@ function Goal() {
             <TeamCommonCommentPost />
           </s.GoalPageWrapper>
         )}
-        <main>
+        <main style={{ height: "100%" }}>
           <Outlet />
         </main>
       </s.Content>
