@@ -3,16 +3,38 @@ import Calendar from "react-calendar";
 import "./Calendar.css"; // css import
 import moment from "moment";
 
+import { API } from "../../api/axios";
+
 import * as S from "./style";
 
 function TeamCalendar({ $getSelectedDate }) {
-  const dayList = ["2023-11-16", "2023-11-17"];
-
   const weekdaysFormat_w = ["S", "M", "T", "W", "T", "F", "S"];
   const [value, onChange] = useState(new Date());
 
+  const [data, setData] = useState({
+    allCompleteDateList: [],
+    inCompleteDateList: []
+  });
+
+  const fetchLanternsData = async () => {
+    try {
+      const response = await API.get(
+        `/api/todos/monthly?yearMonth=${moment(value).format("YYYY-MM")}`
+      );
+      setData(response.data);
+    } catch (error) {
+      console.log("에러~", error);
+      //api없을 경우 임시로 넣어두는 데이터, 추후 삭제 예정
+      setData({
+        allCompleteDateList: ["2023-11-1", "2023-11-30"],
+        inCompleteDateList: ["2023-11-14", "2023-11-29"]
+      });
+    }
+  };
+
   useEffect(() => {
     $getSelectedDate(value);
+    fetchLanternsData();
   }, [value]);
 
   return (
@@ -30,10 +52,23 @@ function TeamCalendar({ $getSelectedDate }) {
           // 날짜 타일에 컨텐츠 추가하기 (html 태그)
           // 추가할 html 태그를 변수 초기화
           let html = [];
-          // 현재 날짜가 post 작성한 날짜 배열에 있다면, 배경추가
-          if (dayList.find(x => x === moment(date).format("YYYY-MM-DD"))) {
-            html.push(<div key={date} className="calendar-isComplete"></div>);
+          // 현재 날짜가 allCompleteDateList 완료 데이터 리스트에 있다면
+          if (
+            data.allCompleteDateList.find(
+              x => x === moment(date).format("YYYY-MM-DD")
+            )
+          ) {
+            html.push(<div key={date} className="calendar-isComplete" />);
           }
+          // 현재 날짜가inCompleteDateList 미완료 데이터 리스트에 있다면
+          else if (
+            data.inCompleteDateList.find(
+              x => x === moment(date).format("YYYY-MM-DD")
+            )
+          ) {
+            html.push(<div key={date} className="calendar-isNotComplete" />);
+          }
+
           // 다른 조건을 주어서 html.push 에 추가적인 html 태그를 적용할 수 있음.
           return html;
         }}
