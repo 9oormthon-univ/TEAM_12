@@ -2,10 +2,13 @@ import React from "react";
 import { s } from "./style";
 import TeamPageHeader from "../../components/team/teamPageHeader/TeamPageHeader";
 import TeamNav from "../../components/team/teamNav/TeamNav";
-import Todo from "../../components/team/todo/Todo.jsx";
+
 import GoalScheduleWrapper from "../../components/goal/goalScheduleWrap/GoalScheduleWrapper.jsx";
 import { Outlet } from "react-router-dom";
 import TodoCount from "../../components/memori/todoCount/TodoCount.jsx";
+import GoalSchedule from "../../components/goal/goalSchedule/GoalSchedule.jsx";
+import GoalMemori from "../../components/memori/goalMemori/goalMemoriSchedule/GoalMemoriSchedule.jsx";
+import GoalMemoriSchedule from "../../components/memori/goalMemori/goalMemoriSchedule/GoalMemoriSchedule.jsx";
 
 function Memori() {
   const TeamNames = [
@@ -103,6 +106,7 @@ function Memori() {
         <s.TeamPageBody>
           <TeamNav logo={""} teams={TeamNames} />
           <s.TeamPageContent>
+            {/* ---- 투두 카운트 ---- */}
             <s.MemoriPageHeaderWrapper>
               <s.MemoriPageHeaderTitle>
                 총 <span>230건</span>의 Todo가 있었어요.
@@ -112,6 +116,19 @@ function Memori() {
               </s.MemoriPageHeaderSubtitle>
             </s.MemoriPageHeaderWrapper>
             <TodoCount />
+            {/* ---- 투두 카운트 ---- */}
+
+            {/* ---- 골 달성 정도 체크  ---- */}
+            <s.MemoriPageHeaderWrapper>
+              <s.MemoriPageHeaderTitle>
+                총 <span>10건</span>의 Goal이 있었어요.
+              </s.MemoriPageHeaderTitle>
+              <s.MemoriPageHeaderSubtitle>
+                Goal의 목표 수행률을 확인해보세요!
+              </s.MemoriPageHeaderSubtitle>
+            </s.MemoriPageHeaderWrapper>
+            <GoalMemoriSchedule />
+            {/* ---- 골 달성 정도 체크  ---- */}
           </s.TeamPageContent>
         </s.TeamPageBody>
       </s.Team>
