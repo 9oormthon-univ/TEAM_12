@@ -7,6 +7,7 @@ import { Outlet } from "react-router-dom";
 
 import GoalScheduleContent from "../../components/goal/goalSchedule/GoalScheduleContent.jsx";
 import TodoCount from "../../components/todo/todoCount/TodoCount.jsx";
+import Memori from "../../components/report/memori/Memori.jsx";
 
 function Report() {
   const startDate = "2023-11-2";
@@ -45,6 +46,10 @@ function Report() {
               type="report"
             />
             {/* ---- 골 달성 정도 체크  ---- */}
+
+            {/* ---- 회고  ---- */}
+            <Memori />
+            {/* ---- 회고  ---- */}
           </s.TeamPageContent>
         </s.TeamPageBody>
       </s.Team>

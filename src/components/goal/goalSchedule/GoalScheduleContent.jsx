@@ -157,7 +157,7 @@ function GoalScheduleContent({
         <s.GoalDurationText>{dateStringMaker(startDate)}</s.GoalDurationText>
         <s.GoalDurationText>{dateStringMaker(endDate)}</s.GoalDurationText>
       </s.GoalDurationDiv>
-      <s.GoalList>
+      <s.GoalList style={{ marginBottom: type == "report" ? "3.75rem" : "" }}>
         {goals.length > 0 &&
           goals.map((e, i) => (
             <GoalColumn key={e.goalId} goal={getColumn(e)} index={i} />
