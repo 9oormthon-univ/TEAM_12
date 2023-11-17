@@ -3,11 +3,12 @@ import TeamCommonAlert from "./../teamCommon/TeamCommonAlert";
 import TeamCommonSectionTitle from "../teamCommon/TeamCommonSectionTitle.jsx";
 
 import TeamCalendar from "../teamCalendar/TeamCalendar.jsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import moment from "moment";
 
 import TodoBtnWrap from "../../todo/todoBtnWrap/TodoBtnWrap.jsx";
 import TodoEntry from "./../../todo/todoEntry/TodoEntry";
+import { API } from "../../../api/axios.js";
 
 function Todo({ today, unfinished }) {
   const todayTasks = today.map(t => (
@@ -18,14 +19,46 @@ function Todo({ today, unfinished }) {
     <TodoEntry key={u.todoId} todoInfo={u} isThroughGoal={false} />
   ));
 
+  const [displayDate, setDisplayDate] = useState("");
   const [selectedDate, setSelectedDate] = useState(
     moment().format("YYYY년 M월 D일")
   );
+  const [todayTodo, setTodayTodo] = useState([]);
+  const [unfinishedTodo, setUnfinishedTodo] = useState([]);
+  // todayTasks, unfinishedTasks를 위 데이터로 mapping
+
   const getSelectedDate = date => {
     setSelectedDate(moment(date).format("YYYY년 M월 D일"));
+    setDisplayDate(moment(date).format("YYYY-M-D"));
   };
 
   const unfinishedDescription = "아직 완료되지 않았어요";
+
+  const fetchTodayTodoData = async () => {
+    try {
+      const response = await API.get(`api/todos?date=${displayDate}`);
+      setTodayTodo(response.data);
+    } catch (error) {
+      console.log("에러 발생", error);
+    }
+  };
+
+  const fetchUnfinishedData = async () => {
+    try {
+      const response = await API.get(`api/todos/incomplete`);
+      setUnfinishedTodo(response.data);
+    } catch (error) {
+      console.log("에러 발생", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchTodayTodoData();
+  }, [displayDate]);
+
+  useEffect(() => {
+    fetchUnfinishedData();
+  }, []);
 
   return (
     <s.TodoWrapper>
