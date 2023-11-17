@@ -4,6 +4,7 @@ export const TodoCountWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  margin-bottom: 3.75rem;
 `;
 
 // todo 달성률 한 라인. 구분기준 : 맴버
