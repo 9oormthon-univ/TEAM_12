@@ -33,7 +33,7 @@ function Report() {
         />
         <s.Line />
         <s.TeamPageBody>
-          <TeamNav logo={""} teams={TeamNames} />
+          <TeamNav progress={20} teams={TeamNames} />
           <s.TeamPageContent>
             {/* ---- 투두 카운트 ---- */}
             <TodoCount />
