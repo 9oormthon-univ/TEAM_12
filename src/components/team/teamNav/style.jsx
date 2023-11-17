@@ -13,7 +13,7 @@ export const s = {
     align-items: flex-start;
     gap: 0.625rem;
   `,
-  Logo: styled.div`
+  Logo: styled.img`
     width: 12.5rem;
     height: 12.5rem;
     border-radius: 0.625rem;

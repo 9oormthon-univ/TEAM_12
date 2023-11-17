@@ -3,7 +3,7 @@ import { s } from "./style";
 import TeamPageHeader from "../../components/team/teamPageHeader/TeamPageHeader";
 import TeamNav from "../../components/team/teamNav/TeamNav";
 import Todo from "../../components/team/todo/Todo.jsx";
-import GoalScheduleWrapper from '../../components/goal/goalScheduleWrap/GoalScheduleWrapper.jsx'
+import GoalScheduleWrapper from "../../components/goal/goalScheduleWrap/GoalScheduleWrapper.jsx";
 import { Outlet } from "react-router-dom";
 
 function Team() {
@@ -19,56 +19,56 @@ function Team() {
   const TodayLists = [
     {
       todoId: 1,
-      goalId:3,
+      goalId: 3,
       goalContent: "FE 개발 1차 마감",
       todoContent: "Calendar Component",
       todoManagerId: 1,
-      todoManagerNickName: '이종범',
+      todoManagerNickName: "이종범",
       color: "blue"
     },
     {
       todoId: 2,
-      goalId:2,
+      goalId: 2,
       goalContent: "FE 개발 1차 마감",
       todoContent: "Todo Component",
       todoManagerId: 2,
-      todoManagerNickName: '강민주',
+      todoManagerNickName: "강민주",
       color: "green"
     },
     {
       todoId: 3,
-      goalId:4,
+      goalId: 4,
       goalContent: "FE 개발 1차 마감",
       todoContent: "TeamPage member 초...",
       todoManagerId: 2,
-      todoManagerNickName: '심서현',
+      todoManagerNickName: "심서현",
       color: "blue"
     },
     {
       todoId: 4,
-      goalId:5,
+      goalId: 5,
       goalContent: "BE 개발 1차 마감",
       todoContent: "나의 todo Filter 기능",
       todoManagerId: 4,
-      todoManagerNickName: '박철민',
+      todoManagerNickName: "박철민",
       color: "purple"
     },
     {
       todoId: 5,
-      goalId:6,
+      goalId: 6,
       goalContent: "BE 개발 1차 마감",
       todoContent: "구름 캐릭터 디자인",
       todoManagerId: 3,
-      todoManagerNickName: '신유수',
+      todoManagerNickName: "신유수",
       color: "yellow"
     },
     {
       todoId: 6,
-      goalId:1,
+      goalId: 1,
       goalContent: "BE 개발 1차 마감",
       todoContent: "디자인 1차 피드백",
       todoManagerId: 5,
-      todoManagerNickName: '강희진',
+      todoManagerNickName: "강희진",
       color: "orange"
     }
   ];
@@ -76,47 +76,47 @@ function Team() {
   const UnfinishedLists = [
     {
       todoId: 1,
-      goalId:2,
+      goalId: 2,
       goalContent: "FE 개발 1차 마감",
       todoContent: "도메인 구매하기",
       todoManagerId: 2,
-      todoManagerNickName: '강민주',
+      todoManagerNickName: "강민주",
       color: "blue"
     },
     {
       todoId: 2,
-      goalId:3,
+      goalId: 3,
       goalContent: "FE 개발 1차 마감",
       todoContent: "Progress 디자인 수정 반영",
       todoManagerId: 1,
-      todoManagerNickName: '심서현',
+      todoManagerNickName: "심서현",
       color: "green"
     },
     {
       todoId: 3,
-      goalId:10,
+      goalId: 10,
       goalContent: "BE 개발 1차 마감",
       todoContent: "CI/CD 파이프라인 구축",
       todoManagerId: 3,
-      todoManagerNickName: '박철민',
+      todoManagerNickName: "박철민",
       color: "orange"
     },
     {
       todoId: 4,
-      goalId:11,
+      goalId: 11,
       goalContent: "BE 개발 1차 마감",
       todoContent: "Cors 오류 수정",
       todoManagerId: 5,
-      todoManagerNickName: '신유수',
+      todoManagerNickName: "신유수",
       color: "purple"
     },
     {
       todoId: 5,
-      goalId:7,
+      goalId: 7,
       goalContent: "디자인 마감",
       todoContent: "MainPage 디자인",
       todoManagerId: 1,
-      todoManagerNickName: '강희진',
+      todoManagerNickName: "강희진",
       color: "yellow"
     }
   ];
@@ -124,7 +124,7 @@ function Team() {
   return (
     <>
       <main>
-        <Outlet/>
+        <Outlet />
       </main>
       <s.Team>
         <TeamPageHeader
@@ -133,9 +133,9 @@ function Team() {
         />
         <s.Line />
         <s.TeamPageBody>
-          <TeamNav logo={""} teams={TeamNames} />
+          <TeamNav progress={20} teams={TeamNames} />
           <s.TeamPageContent>
-            <GoalScheduleWrapper/>
+            <GoalScheduleWrapper />
             <Todo today={TodayLists} unfinished={UnfinishedLists} />
           </s.TeamPageContent>
         </s.TeamPageBody>
