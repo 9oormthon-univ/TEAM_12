@@ -1,9 +1,7 @@
 import { s } from "./style.jsx";
 import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
-function TeamCommonCheckField({ text }) {
+function TeamCommonCheckField({ text, color }) {
   const [isChecked, setIsChecked] = useState(false);
 
   const CheckBoxHandler = () => {
@@ -11,8 +9,10 @@ function TeamCommonCheckField({ text }) {
   };
 
   return (
-    <s.CheckField>
-      <s.ChkBox checked={isChecked} onChange={CheckBoxHandler} />
+    <s.CheckField onClick={CheckBoxHandler}>
+      <s.ChkBox checked={isChecked}>
+        {isChecked && <s.ChkBoxLabel $color={color}>✔</s.ChkBoxLabel>}
+      </s.ChkBox>
       <s.CheckText>{text}</s.CheckText>
     </s.CheckField>
   );

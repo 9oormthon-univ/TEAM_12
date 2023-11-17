@@ -1,8 +1,6 @@
 import { s } from "./style.jsx";
 
 function TimelineView({ timelineData, goalName }) {
-  // todo마다 isComplete 속성 필요
-
   const ColorList = [null, "green", "blue"];
 
   const processGoalComment = timelineData.goalCommentList.map(comment => (
@@ -16,7 +14,11 @@ function TimelineView({ timelineData, goalName }) {
   const processTodo = timelineData.todoCommentList.map(todo => (
     <s.TodoWrapper key={todo.todoId}>
       <s.TodoBox $color={ColorList[todo.todoManagerMemberId]}>
-        {/** 체크박스 */}
+        <s.ChkBox>
+          <s.ChkBoxLabel $color={ColorList[todo.todoManagerMemberId]}>
+            ✔
+          </s.ChkBoxLabel>
+        </s.ChkBox>
         <s.TodoBoxContentWrapper>
           <s.TodoTitle>{goalName}</s.TodoTitle>
           <s.TodoContent>{todo.todoContent}</s.TodoContent>
