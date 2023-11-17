@@ -124,8 +124,8 @@ function Team() {
 
   return (
     <>
-      <UseColorpicker num={1} />
-      <UseColorpicker num={2} />
+      <UseColorpicker />
+
       <main>
         <Outlet />
       </main>

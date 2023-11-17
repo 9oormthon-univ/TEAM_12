@@ -7,16 +7,7 @@ function GoalColumn({ goal, index }) {
 
   const getColor = () => {
     const num = goal.progress;
-    const colorText =
-      "rgb(" +
-      colorInfo[num][0] +
-      "," +
-      colorInfo[num][1] +
-      "," +
-      colorInfo[num][2] +
-      ")";
-
-    return colorText;
+    return colorInfo[num];
   };
 
   const lines = [10, 20, 30, 40].map(e => <s.GoalLines key={e} $left={e} />);
