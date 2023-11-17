@@ -4,12 +4,12 @@ export const GlobalStyle = createGlobalStyle`
 
 @font-face {
   font-family: 'Pretendard-Medium';
-  src: url('/fonts/Pretendard-Medium.woff') format('woff'), url('/fonts/Pretendard-Medium.woff2') format('woff2');
+  src: url('/fonts/Pretendard-Medium.woff') format('woff');
 }
 
 @font-face {
   font-family: 'Pretendard-Regular';
-  src: url('/fonts/Pretendard-Regular.woff') format('woff'), url('/fonts/Pretendard-Regular.woff2') format('woff2');
+  src: url('/fonts/Pretendard-Regular.woff') format('woff');
 }
 
   :root {

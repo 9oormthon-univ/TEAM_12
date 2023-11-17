@@ -38,11 +38,8 @@ export const s = {
   TodayDate: styled.span`
     color: ${props => props.theme.colors.black};
     text-align: center;
-    font-family: Pretendard;
+    font-family: "Pretendard-Medium";
     font-size: 1.25rem;
-    font-style: normal;
-    font-weight: bold;
-    line-height: normal;
   `,
   UnfinishedTasks: styled.div`
     display: flex;
@@ -58,8 +55,5 @@ export const s = {
     text-align: center;
     font-family: "Pretendarad-Medium";
     font-size: 1.25rem;
-    font-style: normal;
-    font-weight: bold;
-    line-height: normal;
   `
 };

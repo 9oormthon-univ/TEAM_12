@@ -13,6 +13,7 @@ function GoalColumn({ goal, index }) {
       <s.Goal
         $width={goal.width}
         $position={goal.position}
+        $progress={goal.progress}
         to={`goalId/${goal.id}`}
       >
         <s.GoalInlineText>{goal.text}</s.GoalInlineText>
