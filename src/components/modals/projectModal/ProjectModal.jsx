@@ -20,8 +20,8 @@ function ProjectModal(){
 
   const pwPlaceHolder = '프로젝트의 입장 비밀번호를 입력해주세요';
 
-  const titleInputName = `${titleHeader ? 'project' : 'nick'}Name`;
-  const introInputName = `${titleHeader ? 'project':'member'}Intro`;
+  const titleInputName = `${titleHeader ? 'title' : 'nickname'}`;
+  const introInputName = `${titleHeader ? 'description':'role'}`;
 
   const nameContent = <s.FormInput type="text" id="name" name={titleInputName} required
         placeholder=
@@ -53,7 +53,7 @@ function ProjectModal(){
 
         {/* 소개 or 역할 */}
         <s.FormList>
-          <FormLabel htmlFor='introduce' label={ titleHeader ? '프로젝트 소개':'역할'}/>
+          <FormLabel htmlFor='description' label={ titleHeader ? '프로젝트 소개':'역할'}/>
           {introContent}
         </s.FormList>
 
