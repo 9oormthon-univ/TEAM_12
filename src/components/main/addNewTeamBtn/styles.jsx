@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const s = {
   BtnWrapper: styled.button`
     display: flex;
-    width: 15.625rem;
-    height: 15.0625rem;
+    width: 188px;
+    height: 250px;
     justify-content: center;
     align-items: center;
     gap: 0.625rem;
@@ -14,6 +14,7 @@ export const s = {
   `,
   BtnContent: styled.p`
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 0.625rem;

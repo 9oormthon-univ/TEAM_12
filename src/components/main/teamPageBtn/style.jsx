@@ -2,15 +2,15 @@ import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 
 export const TeamPageBtnWrapper = styled(Link)`
-  width: 250px;
+  width: 188px;
   display: flex;
   flex-direction: column;
 `;
 
 export const TeamPageBtnThumbnail = styled.div`
-  height: 200px;
+  height: 188px;
   background-color: ${props => props.theme.colors.gray0};
-  margin-bottom: 5px;
+  margin-bottom: 0.625rem;
 `;
 
 export const TeamPageBtnInfo = styled.div`
@@ -19,10 +19,10 @@ export const TeamPageBtnInfo = styled.div`
 `;
 
 export const TemaPageBtnTitle = styled.div`
-  font-size: 16px;
+  font-size: 1rem;
   margin-bottom: 5px;
 `;
 export const TeamPageBtnContent = styled.div`
-  font-size: 10px;
+  font-size: 0.875rem;
   color: ${props => props.theme.colors.gray2};
 `;
