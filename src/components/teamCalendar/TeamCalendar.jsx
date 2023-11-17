@@ -9,7 +9,8 @@ import * as S from "./style";
 
 function TeamCalendar({ $getSelectedDate }) {
   const weekdaysFormat_w = ["S", "M", "T", "W", "T", "F", "S"];
-  const [value, onChange] = useState(new Date());
+  const [dateValue, onDateValueChange] = useState(new Date());
+  const [monthValue, onMonthValueChange] = useState(new Date());
 
   const [data, setData] = useState({
     allCompleteDateList: [],
@@ -19,8 +20,9 @@ function TeamCalendar({ $getSelectedDate }) {
   const fetchLanternsData = async () => {
     try {
       const response = await API.get(
-        `/api/todos/monthly?yearMonth=${moment(value).format("YYYY-MM")}`
+        `/api/todos/monthly?yearMonth=${moment(monthValue).format("YYYY-MM")}`
       );
+
       setData(response.data);
     } catch (error) {
       console.log("에러~", error);
@@ -33,17 +35,27 @@ function TeamCalendar({ $getSelectedDate }) {
   };
 
   useEffect(() => {
-    $getSelectedDate(value);
+    $getSelectedDate(dateValue);
+  }, [dateValue]);
+
+  useEffect(() => {
     fetchLanternsData();
-  }, [value]);
+  }, [monthValue]);
 
   return (
     <div>
       <Calendar
         locale="kor"
         showNeighboringMonth={false}
-        onChange={onChange}
-        value={value}
+        onChange={onDateValueChange}
+        value={dateValue}
+        onActiveStartDateChange={value => {
+          onMonthValueChange(value.activeStartDate);
+        }}
+        // onViewChange={value => {
+        //   onMonthValueChange(value);
+        // }}
+        // view={monthValue}
         formatShortWeekday={(locale, date) =>
           weekdaysFormat_w[moment(date).day()]
         }
