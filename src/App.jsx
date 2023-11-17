@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
 
-  overflow-y: scroll;
+  overflow: auto;
   z-index: 1;
 
   width: 1080px;
