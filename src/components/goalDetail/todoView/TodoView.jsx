@@ -3,7 +3,7 @@ import { s } from "./style.jsx";
 
 function TodoView({ todoList }) {
   const processData = todoList.map(todo => (
-    <TodoEntry todoInfo={todo} key={todo.todoId}/>
+    <TodoEntry todoInfo={todo} key={todo.todoId} isThroughGoal={true} />
   ));
 
   return <s.todoListWrapper>{processData}</s.todoListWrapper>;
