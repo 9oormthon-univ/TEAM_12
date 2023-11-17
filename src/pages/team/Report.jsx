@@ -4,10 +4,13 @@ import TeamPageHeader from "../../components/team/teamPageHeader/TeamPageHeader.
 import TeamNav from "../../components/team/teamNav/TeamNav.jsx";
 
 import { Outlet } from "react-router-dom";
-import TodoCount from "../../components/memori/todoCount/TodoCount.jsx";
+
 import GoalScheduleContent from "../../components/goal/goalSchedule/GoalScheduleContent.jsx";
+import TodoCount from "../../components/todo/todoCount/TodoCount.jsx";
 
 function Report() {
+  const startDate = "2023-11-2";
+  const endDate = "2023-11-15";
   const TeamNames = [
     { name: "이종범", part: "BE", color: "red" },
     { name: "강민주", part: "PD", color: "orange" },
@@ -52,7 +55,11 @@ function Report() {
                 Goal의 목표 수행률을 확인해보세요!
               </s.MemoriPageHeaderSubtitle>
             </s.MemoriPageHeaderWrapper>
-            <GoalScheduleContent />
+            <GoalScheduleContent
+              startDate={startDate}
+              endDate={endDate}
+              type="report"
+            />
             {/* ---- 골 달성 정도 체크  ---- */}
           </s.TeamPageContent>
         </s.TeamPageBody>
