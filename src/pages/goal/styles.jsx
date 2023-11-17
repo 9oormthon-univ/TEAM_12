@@ -19,13 +19,16 @@ export const s = {
     top: 0;
     right: 0;
     width: 45%;
-    padding: 1.875rem 2.5rem 2.5rem 2.5rem;
+    height: 100%;
+
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
     z-index: 30;
     background: #ffffff;
     height: 100%;
   `,
   GoalPageWrapper: styled.div`
+    width: 100%;
+    height: 100%;
     display: flex;
     padding: 2.5rem 1.25rem;
     flex-direction: column;
