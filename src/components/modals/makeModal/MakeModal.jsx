@@ -44,6 +44,10 @@ function MakeModal(){
                      pattern="\d{4}-\d{2}-\d{2}"
                      required/> :
         <s.FormSelect name='managerId' id='manager'>
+            {/* api 수신 후 주석 친 부분으로 변경 */}
+            {/* {managers.map((e) => 
+                <s.FormOption key={e.id} value={i.nickname}>
+                {i.nickname}</s.FormOption>)} */}
             {managers.map((e,i) => 
                 <s.FormOption key={i} value={i}>{e}</s.FormOption>)}
         </s.FormSelect>

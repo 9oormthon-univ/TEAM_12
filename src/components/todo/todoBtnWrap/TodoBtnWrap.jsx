@@ -1,8 +1,11 @@
 import { useDispatch } from 'react-redux'
 import {s} from './styles'
-import { modalAction } from '../../../store/modal/modalSlice'
+import { todoGetGoalList, todoGetMemList, modalAction } from '../../../store/modal/modalSlice'
+import { useParams } from 'react-router';
 
 function TodoBtnWrapper(){
+
+  const params = useParams()
 
   const dispatch = useDispatch();
 
@@ -29,7 +32,9 @@ function TodoBtnWrapper(){
   };  
 
   const openTodoMakeModal = () => {
-    dispatch(modalAction.setShowModal({type:'maker',title:'Todo',addInfo}))
+    dispatch(modalAction.setShowModal({type:'maker',title:'Todo',addInfo}));
+    dispatch(todoGetGoalList(params.teamId));
+    dispatch(todoGetMemList(params.teamId));
   }
 
 
