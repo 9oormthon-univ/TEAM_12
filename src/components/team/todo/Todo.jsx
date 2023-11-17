@@ -9,14 +9,13 @@ import moment from "moment";
 import TodoBtnWrap from "../../todo/todoBtnWrap/TodoBtnWrap.jsx";
 import TodoEntry from "./../../todo/todoEntry/TodoEntry";
 
-
 function Todo({ today, unfinished }) {
   const todayTasks = today.map(t => (
-    <TodoEntry key={t.todoId} todoInfo = {t}   />
+    <TodoEntry key={t.todoId} todoInfo={t} isThroughGoal={false} />
   ));
 
   const unfinishedTasks = unfinished.map(u => (
-    <TodoEntry key={u.todoId} todoInfo = {u}   />
+    <TodoEntry key={u.todoId} todoInfo={u} isThroughGoal={false} />
   ));
 
   const [selectedDate, setSelectedDate] = useState(
