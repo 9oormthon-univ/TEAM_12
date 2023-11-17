@@ -1,11 +1,14 @@
 import {s} from "./style";
 import TeamNavMember from "../teamNavMember/TeamNavMember";
+import { useDispatch } from "react-redux";
+import { modalAction } from "../../../store/modal/modalSlice";
 
 function TeamNav({logo,teams}){
 
+    const dispatch = useDispatch();
 
     const addMemberHandler = () =>{
-        console.log('얍!')
+        dispatch(modalAction.setShowModal({type:'project',title:'member',addInfo:{}}))
     }
 
     const members = teams.map(e=> 

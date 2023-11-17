@@ -22,12 +22,12 @@ function MakeModal(){
         <s.FormInput 
             type='text'
             id='title' 
-            name='goalName' 
+            name='title' 
             placeholder={'Goal의 이름을 적어주세요!'}
             required/> :
-        <s.FormSelect name='todoGoal' id='title'>
+        <s.FormSelect name='goalId' id='title'>
             {goals.map((e,i)=>
-            <s.FormOption key={i} value={e} >{e}</s.FormOption>)}
+            <s.FormOption key={i} value={i} >{e}</s.FormOption>)}
         </s.FormSelect>;
 
     const makerContentInput = 
@@ -43,9 +43,9 @@ function MakeModal(){
                      name='lastDate' 
                      pattern="\d{4}-\d{2}-\d{2}"
                      required/> :
-        <s.FormSelect name='manager' id='manager'>
+        <s.FormSelect name='managerId' id='manager'>
             {managers.map((e,i) => 
-                <s.FormOption key={i} value={e}>{e}</s.FormOption>)}
+                <s.FormOption key={i} value={i}>{e}</s.FormOption>)}
         </s.FormSelect>
     
 
