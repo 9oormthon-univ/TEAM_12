@@ -1,6 +1,6 @@
 import { s } from "./style.jsx";
 
-function TodoEntry({ todoInfo : i }) {
+function TodoEntry({ todoInfo: i }) {
   return (
     <s.TodoEntryWrapper
       to={`goalId/${i.goalId}/todoId/${i.todoId}`}

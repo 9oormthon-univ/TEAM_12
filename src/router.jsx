@@ -8,6 +8,7 @@ import Goal from "./pages/goal/Goal";
 import Login from "./pages/login/Login";
 import SignUP from "./pages/login/SignUp";
 import Memori from "./pages/team/Memori";
+import TodoPage from "./pages/todo/TodoPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -20,7 +21,18 @@ const router = createBrowserRouter([
         element: <Team />,
         action: formSubmit,
         id: "team",
-        children: [{ path: "goalId/:goalId", element: <Goal /> }]
+        children: [
+          {
+            path: "goalId/:goalId",
+            element: <Goal />,
+            children: [
+              {
+                path: "todoId/:todoId",
+                element: <TodoPage />
+              }
+            ]
+          }
+        ]
       },
       { path: "/memori/:teamId", element: <Memori /> },
       { path: "/login", element: <Login /> },

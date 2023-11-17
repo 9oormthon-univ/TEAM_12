@@ -1,11 +1,15 @@
 import TeamCommonAlert from "../../components/team/teamCommon/TeamCommonAlert.jsx";
 import Top from "./../../components/goalDetail/top/Top.jsx";
-import { s } from "./styles";
 import GoalInfo from "./../../components/goalDetail/goalInfo/GoalInfo";
-import { Outlet, useParams } from 'react-router-dom'
+import { Outlet, useParams } from "react-router-dom";
 
-function Goal(){
+import { useState } from "react";
+import { s } from "./styles";
+import TimelineView from "../../components/goalDetail/timelineView/TimelineView.jsx";
+import TodoView from "./../../components/goalDetail/todoView/TodoView";
+import TeamCommonCommentPost from "../../components/team/teamCommon/TeamCommonCommentPost.jsx";
 
+function Goal() {
   const param = useParams();
   const DUMMY_TODOLIST = [
     {
@@ -52,14 +56,37 @@ function Goal(){
     <>
       <s.Backdrop to={".."} />
       <s.Content>
-      { !param.todoId && 
-        <s.GoalPageWrapper>
-          <TeamCommonAlert />
-          <Top />
-          <GoalInfo />
-        </s.GoalPageWrapper> }
+        {!param.todoId && (
+          <s.GoalPageWrapper>
+            <TeamCommonAlert />
+            <Top />
+            <GoalInfo />
+            <s.NavBarWrapper>
+              <s.NavBtnWrapper>
+                <s.NavBtn
+                  onClick={() => TabClickHandler("Timeline")}
+                  selected={activeTab === "Timeline"}
+                >
+                  Timeline
+                </s.NavBtn>
+                <s.NavBtn
+                  onClick={() => TabClickHandler("Todo")}
+                  selected={activeTab === "Todo"}
+                >
+                  Todo
+                </s.NavBtn>
+              </s.NavBtnWrapper>
+              <s.NavLine />
+            </s.NavBarWrapper>
+            <s.ViewWrapper>
+              {activeTab === "Timeline" && <TimelineView />}
+              {activeTab === "Todo" && <TodoView todoList={DUMMY_TODOLIST} />}
+            </s.ViewWrapper>
+            <TeamCommonCommentPost />
+          </s.GoalPageWrapper>
+        )}
         <main>
-          <Outlet/>
+          <Outlet />
         </main>
       </s.Content>
     </>
