@@ -2,17 +2,11 @@ import TodoEntry from "../../todo/todoEntry/TodoEntry.jsx";
 import { s } from "./style.jsx";
 
 function TodoView({ todoList }) {
-  // const processData = todoList.map(todo => (
-  //   <TodoEntry
-  //     key={todo.todoId}
-  //     category={todo.goalContent}
-  //     title={todo.todoContent}
-  //     col={todo.todoManager}
-  //     //ischecked={todo.isComplete}
-  //   />
-  // ));
+  const processData = todoList.map(todo => (
+    <TodoEntry todoInfo={todo} key={todo.todoId}/>
+  ));
 
-  return <s.todoListWrapper>HELLO</s.todoListWrapper>;
+  return <s.todoListWrapper>{processData}</s.todoListWrapper>;
 }
 
 export default TodoView;

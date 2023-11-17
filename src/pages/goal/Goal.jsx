@@ -13,6 +13,7 @@ function Goal() {
   const param = useParams();
   const DUMMY_TODOLIST = [
     {
+      goalId:1,
       goalContent: "FE 개발 1차 마감",
       todoId: 1,
       todoContent: "도메인 구매하기",
@@ -20,6 +21,7 @@ function Goal() {
       isComplete: false
     },
     {
+      goalId:2,
       goalContent: "FE 개발 1차 마감",
       todoId: 2,
       todoContent: "Progress 디자인 수정 반영",
@@ -27,6 +29,7 @@ function Goal() {
       isComplete: false
     },
     {
+      goalId:3,
       goalContent: "FE 개발 1차 마감",
       todoId: 3,
       todoContent: "TeamPage member 초대 오류 수정하기 2",
@@ -34,6 +37,7 @@ function Goal() {
       isComplete: true
     },
     {
+      goalId:4,
       goalContent: "FE 개발 1차 마감",
       todoId: 4,
       todoContent: "TeamPage member 초대 오류 수정하기",
