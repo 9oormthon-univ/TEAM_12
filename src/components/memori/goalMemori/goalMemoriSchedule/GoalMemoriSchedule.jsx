@@ -2,36 +2,96 @@ import React from "react";
 import { s } from "./style";
 
 import GoalMemoriColumn from "../goalMemoriColumn/GoalMemoriColumn";
+import moment from "moment";
 
 function GoalMemoriSchedule() {
+  const getColumn = goal => {};
   const goals = [
     {
-      id: 1,
-      text: "Something Todo Goal",
-      width: 10,
-      position: 0
+      goalId: 7,
+      projectId: 3,
+      title: "GoalAddTest",
+      content: "goal Add 추가",
+      startDate: "2023-11-14",
+      endDate: "2023-11-15",
+      goalAgreeList: [
+        {
+          goalAgreeId: 11,
+          memberId: 5,
+          memberCheck: true
+        },
+        {
+          goalAgreeId: 16,
+          memberId: 7,
+          memberCheck: true
+        },
+        {
+          goalAgreeId: 19,
+          memberId: 6,
+          memberCheck: true
+        }
+      ],
+      complete: true
     },
     {
-      id: 2,
-      text: "Goal1",
-      width: 5,
-      position: 10
+      goalId: 8,
+      projectId: 3,
+      title: "GoalMemberAddTest",
+      content: "Goal에 Member 추가",
+      startDate: "2023-11-14",
+      endDate: "2023-11-16",
+      goalAgreeList: [
+        {
+          goalAgreeId: 12,
+          memberId: 5,
+          memberCheck: true
+        },
+        {
+          goalAgreeId: 13,
+          memberId: 6,
+          memberCheck: true
+        },
+        {
+          goalAgreeId: 17,
+          memberId: 7,
+          memberCheck: true
+        }
+      ],
+      complete: true
     },
     {
-      id: 3,
-      text: "Goal2",
-      width: 20,
-      position: 25
+      goalId: 9,
+      projectId: 3,
+      title: "MemberAddTest",
+      content: "Member 추가 후 agree 확인",
+      startDate: "2023-11-14",
+      endDate: "2023-11-15",
+      goalAgreeList: [
+        {
+          goalAgreeId: 14,
+          memberId: 5,
+          memberCheck: true
+        },
+        {
+          goalAgreeId: 15,
+          memberId: 6,
+          memberCheck: true
+        },
+        {
+          goalAgreeId: 18,
+          memberId: 7,
+          memberCheck: true
+        }
+      ],
+      complete: true
     }
   ];
 
-  const startDay = new Date(2023, 9, 14);
-  const endDay = new Date(2023, 10, 14);
+  const startDay = moment("2023-11-13");
+  const endDay = moment("2023-11-15");
 
   const dateStringMaker = date => {
-    return `${date.getFullYear()}년 ${
-      date.getMonth() + 1
-    }월 ${date.getDate()}일`;
+    return date.format("YYYY년 M월 D일");
   };
 
   return (
