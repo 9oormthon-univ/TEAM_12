@@ -1,34 +1,65 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import * as S from "./style";
+import { useParams } from "react-router-dom";
+import { API } from "../../../api/axios";
 function TodoCount() {
-  const data = {
-    progressList: [
-      { name: "이종범", doTodo: 30, manageTodo: 24 },
-      { name: "강민주", doTodo: 26, manageTodo: 22 },
-      { name: "심서현", doTodo: 24, manageTodo: 20 },
-      { name: "박철민", doTodo: 18, manageTodo: 20 },
-      { name: "신유수", doTodo: 12, manageTodo: 18 },
-      { name: "강희진", doTodo: 10, manageTodo: 16 }
+  const params = useParams();
+  const [data, setData] = useState([]);
+
+  const Dummy_data = {
+    todoCount: 3,
+    reportTodoList: [
+      {
+        memberId: 1,
+        memberNickName: "하나",
+        completeCount: 2,
+        managedCount: 3
+      },
+      {
+        memberId: 2,
+        memberNickName: "둘",
+        completeCount: 1,
+        managedCount: 0
+      }
     ]
   };
+
+  const fetchLanternsData = async () => {
+    try {
+      const response = await API.get(`/api/projects/${params.teamId}`);
+      setData(response.data.reportTodoList);
+    } catch (error) {
+      console.log("에러~", error);
+      //api없을 경우 임시로 넣어두는 데이터, 추후 삭제 예정
+      // ----팀페이지
+      setData(Dummy_data.reportTodoList);
+    }
+  };
+
+  useEffect(() => {
+    fetchLanternsData();
+  }, []);
+
   return (
     <S.TodoCountWrapper>
-      {data.progressList.map((member, index) => (
+      {data.map((member, index) => (
         <S.TodoCountContent key={index}>
-          <S.TodoCountContentMember>{member.name}</S.TodoCountContentMember>
+          <S.TodoCountContentMember>
+            {member.memberNickName}
+          </S.TodoCountContentMember>
           <S.TodoCountContentLines>
             {/* ---- 완료한 Todo ---- */}
             <S.TodoCountContentLineWrapper>
               <S.TodoCountContentLine>
                 <S.TodoCountContentLineProgress
                   $progress={
-                    (member.doTodo / data.progressList[0].doTodo) * 100 + "%"
+                    (member.completeCount / data[0].completeCount) * 100 + "%"
                   }
                   $type={"doTodo"}
                 />
               </S.TodoCountContentLine>
               <S.TodoCountContentNum $type={"doTodo"}>
-                {member.doTodo}
+                {member.completeCount}
               </S.TodoCountContentNum>
             </S.TodoCountContentLineWrapper>
 
@@ -37,14 +68,13 @@ function TodoCount() {
               <S.TodoCountContentLine>
                 <S.TodoCountContentLineProgress
                   $progress={
-                    (member.manageTodo / data.progressList[0].doTodo) * 100 +
-                    "%"
+                    (member.managedCount / data[0].completeCount) * 100 + "%"
                   }
                   $type={""}
                 />
               </S.TodoCountContentLine>
               <S.TodoCountContentNum $type={""}>
-                {member.manageTodo}
+                {member.managedCount}
               </S.TodoCountContentNum>
             </S.TodoCountContentLineWrapper>
           </S.TodoCountContentLines>
