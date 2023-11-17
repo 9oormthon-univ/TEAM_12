@@ -24,7 +24,7 @@ export const GlobalStyle = createGlobalStyle`
    }
 
    html{
-    font-family: "Pretnedard-Regular";
+    font-family: "Pretendard-Regular";
     font-size: 16px;
    }
   html, body, div, span, applet, object, iframe,

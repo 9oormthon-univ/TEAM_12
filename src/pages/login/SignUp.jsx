@@ -5,16 +5,16 @@ import { useNavigate } from "react-router-dom";
 function SignUp() {
   const navigate = useNavigate();
   const [loginData, setLoginData] = useState({
-    name: "",
-    id: "",
-    pw: "",
+    fullName: "",
+    userName: "",
+    password: "",
     pwCheck: ""
   });
 
   const [isPwCheck, setIsPwCheck] = useState(true);
 
   useEffect(() => {
-    if (loginData.pw != loginData.pwCheck) {
+    if (loginData.password != loginData.pwCheck) {
       setIsPwCheck(false);
     } else {
       setIsPwCheck(true);
@@ -31,48 +31,51 @@ function SignUp() {
 
   const handleSubmit = async event => {
     event.preventDefault();
-    const { name, id, pw, pwCheck } = loginData;
+    const { fullName, userName, password, pwCheck } = loginData;
 
-    if (id === "" || pw === "" || name === "" || pwCheck === "") {
+    if (
+      userName === "" ||
+      password === "" ||
+      fullName === "" ||
+      pwCheck === ""
+    ) {
       alert("모든 정보를 입력해주세요!");
       return;
     }
 
-    // try {
-    //   const response = await axios.post("auth/login", {
-    //     id: id,
-    //     pw: pw
-    //   });
+    try {
+      const response = await axios.post("/api/users/signup", {
+        userName: userName,
+        password: password,
+        fullName: fullName
+      });
 
-    //   const accessToken = response.data.token.access;
-    //   const refreshToken = response.data.token.refresh;
-    //   const name = response.data.user.nickname;
+      // const accessToken = response.data.token.access;
+      // const refreshToken = response.data.token.refresh;
+      // const fullName = response.data.fullName;
 
-    //   setUserInfo({
-    //     id: id,
-    //     name: name,
-    //     accessToken: accessToken,
-    //     refreshToken: refreshToken
-    //   });
+      // setUserInfo({
+      //   userName: userName,
+      //   fullName: fullName
+      //   // accessToken: accessToken,
+      //   // refreshToken: refreshToken
+      // });
 
-    //   localStorage.setItem(
-    //     "userInfo",
-    //     JSON.stringify({
-    //       id: id,
-    //       name: name,
-    //       accessToken: accessToken,
-    //       refreshToken: refreshToken
-    //     })
-    //   );
-
-    //   navigate("/");
-    // } catch (error) {
-    //   console.error("Login failed:", error.message);
-    //   alert("비밀번호를 다시 입력해주세요!");
-    // }
-
-    alert("회원가입에 성공하셨습니다!");
-    navigate("/login");
+      // localStorage.setItem(
+      //   "userInfo",
+      //   JSON.stringify({
+      //     userName: userName,
+      //     fullName: fullName
+      //     // accessToken: accessToken,
+      //     // refreshToken: refreshToken
+      //   })
+      // );
+      alert("회원가입이 완료 되었습니다!");
+      navigate("/login");
+    } catch (error) {
+      console.error("Login failed:", error.message);
+      alert("비밀번호를 다시 입력해주세요!");
+    }
   };
 
   return (
@@ -82,9 +85,9 @@ function SignUp() {
           <S.LoginLabel>회원명</S.LoginLabel>
           <S.LoginInput
             required
-            name={"name"}
+            name={"fullName"}
             placeholder="회원명을 입력해주세요."
-            value={loginData.name}
+            value={loginData.fullName}
             onChange={handleInputChange}
           />
         </S.LoginInputWrapper>
@@ -93,9 +96,9 @@ function SignUp() {
           <S.LoginLabel>아이디</S.LoginLabel>
           <S.LoginInput
             required
-            name={"id"}
+            name={"userName"}
             placeholder="아이디를 입력해주세요."
-            value={loginData.id}
+            value={loginData.userName}
             onChange={handleInputChange}
           />
         </S.LoginInputWrapper>
@@ -105,9 +108,9 @@ function SignUp() {
           <S.LoginInput
             required
             type="password"
-            name={"pw"}
+            name={"password"}
             placeholder="비밀번호를 입력해주세요"
-            value={loginData.pw}
+            value={loginData.password}
             onChange={handleInputChange}
           />
           <S.LoginInput
