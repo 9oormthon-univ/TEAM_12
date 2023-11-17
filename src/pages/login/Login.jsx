@@ -11,8 +11,8 @@ function Login() {
   const navigate = useNavigate();
   const [userInfo, setUserInfo] = useRecoilState(userState);
   const [loginData, setLoginData] = useState({
-    id: "",
-    pw: ""
+    userName: "",
+    password: ""
   });
 
   const handleInputChange = event => {
@@ -25,64 +25,45 @@ function Login() {
 
   const handleSubmit = async event => {
     event.preventDefault();
-    const { id, pw } = loginData;
+    const { userName, password } = loginData;
 
-    if (id === "" || pw === "") {
+    if (userName === "" || password === "") {
       alert("아이디와 비밀번호를 입력해주세요!");
       return;
     }
 
-    // try {
-    //   const response = await axios.post("auth/login", {
-    //     id: id,
-    //     pw: pw
-    //   });
+    try {
+      const response = await axios.post("/api/users/login", {
+        userName: userName,
+        password: password
+      });
 
-    //   const accessToken = response.data.token.access;
-    //   const refreshToken = response.data.token.refresh;
-    //   const name = response.data.user.nickname;
+      // const accessToken = response.data.token.access;
+      // const refreshToken = response.data.token.refresh;
+      const fullName = response.data.fullName;
 
-    //   setUserInfo({
-    //     id: id,
-    //     name: name,
-    //     accessToken: accessToken,
-    //     refreshToken: refreshToken
-    //   });
-
-    //   localStorage.setItem(
-    //     "userInfo",
-    //     JSON.stringify({
-    //       id: id,
-    //       name: name,
-    //       accessToken: accessToken,
-    //       refreshToken: refreshToken
-    //     })
-    //   );
-
-    //   navigate("/");
-    // } catch (error) {
-    //   console.error("Login failed:", error.message);
-    //   alert("비밀번호를 다시 입력해주세요!");
-    // }
-
-    setUserInfo({
-      id: id,
-      name: "서현"
-      //   accessToken: accessToken,
-      //   refreshToken: refreshToken
-    });
-
-    localStorage.setItem(
-      "userInfo",
-      JSON.stringify({
-        id: id,
-        name: "서현"
+      setUserInfo({
+        userName: userName,
+        fullName: fullName
         // accessToken: accessToken,
         // refreshToken: refreshToken
-      })
-    );
+      });
 
-    navigate("/");
+      localStorage.setItem(
+        "userInfo",
+        JSON.stringify({
+          userName: userName,
+          fullName: fullName
+          // accessToken: accessToken,
+          // refreshToken: refreshToken
+        })
+      );
+
+      navigate("/");
+    } catch (error) {
+      console.error("Login failed:", error.message);
+      alert("비밀번호를 다시 입력해주세요!");
+    }
   };
   return (
     <S.LoginWrapper>
@@ -90,9 +71,9 @@ function Login() {
         <S.LoginInputWrapper>
           <S.LoginInput
             required
-            name="id"
+            name="userName"
             placeholder="아이디를 입력해주세요."
-            value={loginData.id}
+            value={loginData.userName}
             onChange={handleInputChange}
           />
         </S.LoginInputWrapper>
@@ -100,9 +81,9 @@ function Login() {
         <S.LoginInputWrapper>
           <S.LoginInput
             required
-            name="pw"
+            name="password"
             placeholder="비밀번호를 입력해주세요."
-            value={loginData.pw}
+            value={loginData.password}
             type="password"
             onChange={handleInputChange}
           />
