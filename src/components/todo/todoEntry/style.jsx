@@ -11,21 +11,6 @@ export const s = {
     border-radius: 0.625rem;
     border: 2px solid ${({ $color }) => $color};
   `,
-  TodoChkBox: styled.input.attrs({ type: "checkbox" })`
-    display: flex;
-    width: 1.25rem;
-    height: 1.25rem;
-    padding: 0.3125rem 0.625rem;
-    justify-content: center;
-    align-items: center;
-    gap: 0.625rem;
-    border-radius: 0.3125rem;
-    cursor: pointer;
-    background: ${props => props.theme.colors.gray0};
-    &:ischecked {
-      background: red;
-    }
-  `,
   TodoContentsWrapper: styled.div`
     display: flex;
     flex-direction: column;
@@ -65,5 +50,38 @@ export const s = {
     white-space: nowrap;
     font-family: "Pretendarad-Medium";
     font-size: 1rem;
+  `,
+  CheckField: styled.div`
+    display: flex;
+    height: 1.25rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3125rem;
+  `,
+  ChkBoxWrapper: styled.div`
+    display: inline-block;
+    vertical-align: middle;
+  `,
+  ChkBox: styled.div`
+    display: inline-block;
+    width: 1.25rem;
+    height: 1.25rem;
+    padding: 0.3125rem 0.625rem;
+    background: ${p => p.theme.colors.gray0};
+    border-radius: 0.3125rem;
+    position: relative;
+    cursor: pointer;
+  `,
+  ChkBoxLabel: styled.span`
+    display: inline-block;
+    font-size: 1rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 0.3125rem;
+    position: absolute;
+    text-align: center;
+    top: 15%;
+    left: 0;
+    color: ${({ $color }) => $color};
   `
 };
