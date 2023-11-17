@@ -58,6 +58,27 @@ export const s = {
     border: 2px solid ${({ $color }) => $color};
     border-radius: 0.625rem;
   `,
+  ChkBox: styled.div`
+    display: inline-block;f
+    width: 1.25rem;
+    height: 1.25rem;
+    padding: 0.3125rem 0.625rem;
+    background: ${p => p.theme.colors.gray0};
+    border-radius: 0.3125rem;
+    position: relative;
+  `,
+  ChkBoxLabel: styled.span`
+    display: inline-block;
+    font-size: 1rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 0.3125rem;
+    position: absolute;
+    text-align: center;
+    top: 15%;
+    left: 0;
+    color: ${({ $color }) => $color};
+  `,
   TodoBoxContentWrapper: styled.div`
     display: flex;
     flex-direction: column;
