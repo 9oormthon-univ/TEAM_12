@@ -30,7 +30,7 @@ function Memori() {
       const response = await API.get(`/api/memoirs/${params.teamId}`);
       setData(response.data);
     } catch (error) {
-      console.log("에러~", error);
+      console.log("---- Memori 에러~", error);
       //api없을 경우 임시로 넣어두는 데이터, 추후 삭제 예정
       // ----팀페이지
       setData(Dummy_data);
@@ -67,7 +67,7 @@ function Memori() {
         alert("회고록을 이미 작성하셨습니다!");
       }
     } catch (error) {
-      console.error(error);
+      console.error("회고록 작성 실패 에러", error);
       alert("회고록 작성에 실패했습니다.");
     }
   };

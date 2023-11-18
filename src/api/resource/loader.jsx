@@ -53,7 +53,7 @@ export const getTeamInfo = async ({ request, params }) => {
     // ],
   };
   try {
-    const res = await API.get(`api/projects/${router[1]}`);
+    const res = await API.get(`/api/projects/${router[1]}`);
     console.log("로더 성공");
     return res.data;
   } catch {

@@ -31,7 +31,7 @@ function TodoCount() {
       setData(response.data.reportTodoList);
       setDataCount(response.data.todoCount);
     } catch (error) {
-      console.log("에러~", error);
+      console.log("----- todoCount 에러~", error);
       //api없을 경우 임시로 넣어두는 데이터, 추후 삭제 예정
       // ----팀페이지
       setData(Dummy_data.reportTodoList);

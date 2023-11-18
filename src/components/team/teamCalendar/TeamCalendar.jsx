@@ -25,7 +25,7 @@ function TeamCalendar({ $getSelectedDate }) {
 
       setData(response.data);
     } catch (error) {
-      console.log("에러~", error);
+      console.log("---- TeamCalendar 에러~", error);
       //api없을 경우 임시로 넣어두는 데이터, 추후 삭제 예정
       setData({
         allCompleteDateList: ["2023-11-1", "2023-11-30"],
@@ -66,7 +66,7 @@ function TeamCalendar({ $getSelectedDate }) {
           let html = [];
           // 현재 날짜가 allCompleteDateList 완료 데이터 리스트에 있다면
           if (
-            data.allCompleteDateList.find(
+            data?.allCompleteDateList?.find(
               x => x === moment(date).format("YYYY-MM-DD")
             )
           ) {
@@ -74,7 +74,7 @@ function TeamCalendar({ $getSelectedDate }) {
           }
           // 현재 날짜가inCompleteDateList 미완료 데이터 리스트에 있다면
           else if (
-            data.inCompleteDateList.find(
+            data?.inCompleteDateList?.find(
               x => x === moment(date).format("YYYY-MM-DD")
             )
           ) {
