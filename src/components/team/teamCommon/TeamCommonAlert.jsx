@@ -1,9 +1,11 @@
 import { s } from "./style";
 
-function TeamCommonAlert() {
+function TeamCommonAlert({ icon = "❗️", content = "경고" }) {
   return (
     <s.AlertWrapper>
-      <s.AlertText>❗️alert Something</s.AlertText>
+      <s.AlertText>
+        {icon} {content}
+      </s.AlertText>
     </s.AlertWrapper>
   );
 }

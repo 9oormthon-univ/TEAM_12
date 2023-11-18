@@ -16,7 +16,7 @@ function GoalScheduleContent({
 
   const [goals, setGoals] = useState([]);
 
-  const fetchLanternsData = async () => {
+  const fetchData = async () => {
     try {
       var response;
       // ----팀페이지
@@ -44,7 +44,7 @@ function GoalScheduleContent({
   };
 
   useEffect(() => {
-    fetchLanternsData();
+    fetchData();
   }, []);
 
   //---- 날짜 반환 년, 월, 일

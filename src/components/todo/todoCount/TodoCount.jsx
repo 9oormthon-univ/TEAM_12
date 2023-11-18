@@ -25,7 +25,7 @@ function TodoCount() {
     ]
   };
 
-  const fetchLanternsData = async () => {
+  const fetchData = async () => {
     try {
       const response = await API.get(`/api/projects/${params.teamId}`);
       setData(response.data.reportTodoList);
@@ -40,7 +40,7 @@ function TodoCount() {
   };
 
   useEffect(() => {
-    fetchLanternsData();
+    fetchData();
   }, []);
 
   return (
