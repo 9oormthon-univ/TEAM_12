@@ -21,8 +21,9 @@ const router = createBrowserRouter([
         path: "teamId/:teamId",
         element: <Team />,
         action: createGoalTodoMem,
-        // loader: getTeamInfo, 현재는 api로 정보를 불러올 수 없고 loader로 아무것도 못받아오면 페이지
-        // 자체가 안떠서 주석 처리 해놨습니다 
+        loader: getTeamInfo,
+        // 현재는 api로 정보를 불러올 수 없고 loader로 아무것도 못받아오면 페이지
+        // 자체가 안떠서 주석 처리 해놨습니다
         // 설명은 api/resource/loader에도 있습니다 참고해 주세요
         id: "team",
         children: [
