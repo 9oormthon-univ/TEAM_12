@@ -45,7 +45,7 @@ function Main() {
         <S.MainNavWrapper>
           {userInfo ? (
             <S.UserContent>
-              <div>안녕하세요 {userInfo.name}님!</div>
+              <div>안녕하세요 {userInfo.nickname}님!</div>
               <img src="/Logout.svg" onClick={handleLogout} />
             </S.UserContent>
           ) : (

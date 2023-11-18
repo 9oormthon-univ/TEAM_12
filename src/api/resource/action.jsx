@@ -18,14 +18,14 @@ export const createTeam = async({request,params}) =>{
   }
 
 
-  // const send = await API.post(`/projects`,toSendData);
-  // console.log(send.status)
-  // if (send.status) {
-    
-  // }
-  const mayToReturnData = 1;
+  const send = await API.post(`/api/projects`,toSendData);
+  const {projectId} = send.data.data;
+  const {statusCode} =  send.data;
+  
+  if (statusCode !== 200) alert('에러 발생!')
+  
 
-  return redirect(`teamId/${mayToReturnData}`)
+  return redirect(`teamId/${projectId}`)
 }
 
 
@@ -42,6 +42,9 @@ export const createGoalTodoMem = async({request,params})=>{
   const [id,param] =  router;
 
   const data = await request.formData();
+
+  const {userId} = JSON.parse(localStorage.getItem('userInfo'))
+  data.append("userId",userId)
 
   //요청이 memeber goal todo인지 구분하기 위해 form에 쌓인 데이터 하나를 까서 검증
   const checker = []
