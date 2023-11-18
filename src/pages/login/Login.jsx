@@ -41,11 +41,13 @@ function Login() {
 
       // const accessToken = response.data.token.access;
       // const refreshToken = response.data.token.refresh;
-      const fullName = response.data.fullName;
+      const fullName = response.data.data.nickname;
 
+      const userId = response.data.data.id;
       setUserInfo({
+        userId:userId,
         userName: userName,
-        fullName: fullName
+        nickname: fullName
         // accessToken: accessToken,
         // refreshToken: refreshToken
       });
@@ -53,8 +55,9 @@ function Login() {
       localStorage.setItem(
         "userInfo",
         JSON.stringify({
+          userId: userId,
           userName: userName,
-          fullName: fullName
+          nickname: fullName
           // accessToken: accessToken,
           // refreshToken: refreshToken
         })
