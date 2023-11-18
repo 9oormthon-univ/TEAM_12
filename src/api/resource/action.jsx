@@ -36,15 +36,13 @@ export const createTeam = async({request,params}) =>{
 //완료 후 회고록 작성(data엔트리 돌려서 나오는 values가 '')인게 회고록(이것도 보낼 때 작성시간 체크)
 
 export const createGoalTodoMem = async({request,params})=>{
-  const url = 'asdfaf';
 
   const [router] = Object.entries(params)
   const [id,param] =  router;
 
   const data = await request.formData();
 
-  const {userId} = JSON.parse(localStorage.getItem('userInfo'))
-  data.append("userId",userId)
+
 
   //요청이 memeber goal todo인지 구분하기 위해 form에 쌓인 데이터 하나를 까서 검증
   const checker = []
@@ -74,8 +72,12 @@ export const createGoalTodoMem = async({request,params})=>{
       break;
   }
 
+  const {userId} = JSON.parse(localStorage.getItem('userInfo'))
+  if (type!=='todos') data.append("userId",userId);
+  
+
   const sendData = await 
-        API.post(`/api/${type}/${param}${checker[0] === 'nickname' ? '/members' : ''}`,data);
+        API.post(`/api/${type}${type !=='todos' ? `/${param}` :''}${checker[0] === 'nickname' ? '/members' : ''}`,data);
   
 
   return redirect(`/${id}/${param}`)

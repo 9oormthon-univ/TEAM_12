@@ -30,12 +30,13 @@ function TodoBtnWrapper(){
       new Date(2023,10,14).toISOString().split('T')[0]
     ]
   };  
-
+  
+  dispatch(todoGetGoalList(params.teamId));
+  dispatch(todoGetMemList(params.teamId));
   const openTodoMakeModal = () => {
-    dispatch(modalAction.setShowModal({type:'maker',title:'Todo',addInfo}));
-    dispatch(todoGetGoalList(params.teamId));
-    dispatch(todoGetMemList(params.teamId));
+    dispatch(modalAction.setShowModal({type:'maker',title:'Todo'}));
   }
+
 
 
   return(

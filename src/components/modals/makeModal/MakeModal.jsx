@@ -6,17 +6,17 @@ import { Form } from 'react-router-dom';
 
 
 function MakeModal(){
-    const {title, addInfo} = useSelector(state => state.modal);
+    const {title, addInfo ,duration ,goals,managers} = useSelector(state => state.modal);
     
     const dispatch = useDispatch();
     
     const modalTitle = title === 'Goal';
 
-    const [minDate , maxDate] = modalTitle ? addInfo : addInfo.duration;
+
+    const [ minDate , maxDate] = modalTitle ? addInfo : duration;
 
     const closeModal = ()=>dispatch(modalAction.setCloseModal())
 
-    const { goals , managers } = addInfo;
 
     const makerTitleInput =  modalTitle ? 
         <s.FormInput 
@@ -26,8 +26,8 @@ function MakeModal(){
             placeholder={'Goal의 이름을 적어주세요!'}
             required/> :
         <s.FormSelect name='goalId' id='title'>
-            {goals.map((e,i)=>
-            <s.FormOption key={i} value={i} >{e}</s.FormOption>)}
+            {goals.map((e)=>
+            <s.FormOption key={e.goalId} value={e.goalId} >{e.content}</s.FormOption>)}
         </s.FormSelect>;
 
     const makerContentInput = 
@@ -40,16 +40,13 @@ function MakeModal(){
                      id='endDate'
                      min={minDate}
                      max={maxDate}
-                     name='lastDate' 
+                     name='endDate' 
                      pattern="\d{4}-\d{2}-\d{2}"
                      required/> :
-        <s.FormSelect name='managerId' id='manager'>
-            {/* api 수신 후 주석 친 부분으로 변경 */}
-            {/* {managers.map((e) => 
-                <s.FormOption key={e.id} value={i.nickname}>
-                {i.nickname}</s.FormOption>)} */}
-            {managers.map((e,i) => 
-                <s.FormOption key={i} value={i}>{e}</s.FormOption>)}
+        <s.FormSelect name='memberId' id='manager'>
+            {managers.map((e) => 
+                <s.FormOption key={e.id} value={e.id}>
+                {e.nickname}</s.FormOption>)}
         </s.FormSelect>
     
 
@@ -68,7 +65,7 @@ function MakeModal(){
                 </s.FormList>
                 {/* 내용 쓰는 곳 */}
                 <s.FormList>
-                    <FormLabel htmlFor='content' label={`${title} 만들기`} />
+                    <FormLabel htmlFor='content' label={`${title} 내용`} />
                     {makerContentInput}
                 </s.FormList>
                 {/* 날짜 1 */}
@@ -80,7 +77,7 @@ function MakeModal(){
                         id={modalTitle ? 'startDate' : 'deadLine'}
                         min={minDate}
                         max={maxDate} 
-                        name='startDate'
+                        name={modalTitle ? 'startDate' : 'endDate'}
                         required pattern="\d{4}-\d{2}-\d{2}"/>
                 </s.FormList>
                 {/* 종료일 or 담당자 */}
