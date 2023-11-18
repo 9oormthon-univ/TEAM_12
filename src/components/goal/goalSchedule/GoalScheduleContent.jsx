@@ -6,12 +6,11 @@ import GoalColumn from "../goalColumn/GoalColumn";
 import { useParams } from "react-router-dom";
 import { API } from "../../../api/axios";
 
-function GoalScheduleContent({
-  type = "team",
-  startDate,
-  endDate,
-  finishDate = null
-}) {
+function GoalScheduleContent({ type = "team", Date }) {
+  const startDate = Date?.start;
+  const endDate = Date?.end;
+  const finishDate = Date?.fin;
+
   const params = useParams();
 
   const [goals, setGoals] = useState([]);
