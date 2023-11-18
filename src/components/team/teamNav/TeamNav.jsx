@@ -17,7 +17,7 @@ function TeamNav({ progress, teams }) {
     );
   };
 
-  const members = teams.map((e, index) => (
+  const members = teams.length !==0 && teams.map((e, index) => (
     <TeamNavMember
       key={index}
       nickname={e.nickname}

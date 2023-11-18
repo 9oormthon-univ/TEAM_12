@@ -1,4 +1,3 @@
-import axios from "axios";
 import { redirect } from "react-router-dom";
 import { API } from "../axios";
 
@@ -19,10 +18,14 @@ export const createTeam = async({request,params}) =>{
   }
 
 
-  const send = await API.post(`/projects`,toSendData)
+  // const send = await API.post(`/projects`,toSendData);
+  // console.log(send.status)
+  // if (send.status) {
+    
+  // }
+  const mayToReturnData = 1;
 
-
-  return redirect('')
+  return redirect(`teamId/${mayToReturnData}`)
 }
 
 
@@ -61,7 +64,7 @@ export const createGoalTodoMem = async({request,params})=>{
 
     //nickname 분기
     case 'nickname':
-      type = 'project';
+      type = 'projects';
       break;
     
     default:
@@ -69,7 +72,7 @@ export const createGoalTodoMem = async({request,params})=>{
   }
 
   const sendData = await 
-        API.post(`/${type}/${param}${checker[0] === 'nickname' ? '/members' : ''}`,data);
+        API.post(`/api/${type}/${param}${checker[0] === 'nickname' ? '/members' : ''}`,data);
   
 
   return redirect(`/${id}/${param}`)

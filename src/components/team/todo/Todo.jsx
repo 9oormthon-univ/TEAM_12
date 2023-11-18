@@ -93,7 +93,8 @@ function Todo() {
   };
   useEffect(() => {
     fetchTodayTodoData();
-  }, [displayDate]);
+  }, []);
+  // }, [displayDate]);
 
   useEffect(() => {
     fetchTodayTodoData();
