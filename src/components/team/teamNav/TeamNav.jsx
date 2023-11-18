@@ -2,6 +2,7 @@ import { s } from "./style";
 import TeamNavMember from "../teamNavMember/TeamNavMember";
 import { useDispatch } from "react-redux";
 import { modalAction } from "../../../store/modal/modalSlice";
+import { theme } from "../../../style/theme";
 import { useState } from "react";
 
 function TeamNav({ progress, teams }) {
@@ -17,14 +18,16 @@ function TeamNav({ progress, teams }) {
     );
   };
 
-  const members = teams.length !==0 && teams.map((e, index) => (
-    <TeamNavMember
-      key={index}
-      nickname={e.nickname}
-      role={e.role}
-      col={e.color}
-    />
-  ));
+  const members =
+    teams.length !== 0 &&
+    teams.map((e, index) => (
+      <TeamNavMember
+        key={index}
+        nickname={e.nickname}
+        role={e.role}
+        col={theme.memberColors[(e.id % 10) + 1]}
+      />
+    ));
 
   return (
     <s.NavWrapper>
