@@ -21,8 +21,8 @@ function TodoEntry({ todoInfo: i, isThroughGoal, type }) {
 
     setTodoColor(
       type && type === "routeonly"
-        ? theme.memberColors[i.todoManagerId]
-        : theme.memberColors[i.todoManagerMemberId]
+        ? theme.memberColors[(i.todoManafefeagerId % 10) + 1]
+        : theme.memberColors[(i.todoManagerMemberId % 10) + 1]
     );
 
     setCheckField(
@@ -30,19 +30,19 @@ function TodoEntry({ todoInfo: i, isThroughGoal, type }) {
         <TeamCommonCheckField
           isChecked={true}
           text=""
-          color={theme.memberColors[i.todoManagerMemberId]}
+          color={theme.memberColors[(i.todoManagerMemberId % 10) + 1]}
         />
       ) : type === "routeonly" ? (
         <TeamCommonCheckField
           isChecked={i.isComplete}
           text=""
-          color={theme.memberColors[i.todoManagerId]}
+          color={theme.memberColors[(i.todoManagerId % 10) + 1]}
         />
       ) : type === "full" ? (
         <TeamCommonCheckField
           isChecked={i.isComplete}
           text=""
-          color={theme.memberColors[i.todoManagerMemberId]}
+          color={theme.memberColors[(i.todoManagerMemberId % 10) + 1]}
         />
       ) : (
         ""

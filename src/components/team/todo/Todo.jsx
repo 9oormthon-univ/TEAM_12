@@ -9,6 +9,8 @@ import moment from "moment";
 import TodoBtnWrap from "../../todo/todoBtnWrap/TodoBtnWrap.jsx";
 import TodoEntry from "./../../todo/todoEntry/TodoEntry";
 import { API } from "../../../api/axios.js";
+import { useRecoilState } from "recoil";
+import { userState } from "../../../context/authState.jsx";
 
 function Todo() {
   const Dummy_displayDate = [
@@ -57,13 +59,36 @@ function Todo() {
     }
   ];
 
+  const Dummy_myTodo = [
+    {
+      goalId: 1,
+      goalContent: "백엔드 개발",
+      todoId: 3,
+      todoContent: "개발 시작11",
+      todoManagerMemberId: 1,
+      todoManagerNickName: "하나",
+      isComplete: false
+    },
+    {
+      goalId: 1,
+      goalContent: "백엔드 개발",
+      todoId: 4,
+      todoContent: "개발 시작22",
+      todoManagerMemberId: 1,
+      todoManagerNickName: "하나",
+      isComplete: false
+    }
+  ];
+
   const [displayDate, setDisplayDate] = useState(moment().format("YYYY-MM-DD"));
   const [selectedDate, setSelectedDate] = useState(
     moment().format("YYYY년 M월 D일")
   );
   const [todayTodo, setTodayTodo] = useState("");
   const [unfinishedTodo, setUnfinishedTodo] = useState("");
-  // todayTasks, unfinishedTasks를 위 데이터로 mapping
+  const [myTodo, setMyTodo] = useState("");
+  const [myTodoClicked, setMyTodoClicked] = useState(false);
+  const [userInfo, setUserInfo] = useRecoilState(userState);
 
   const getSelectedDate = date => {
     setSelectedDate(moment(date).format("YYYY년 M월 D일"));
@@ -91,33 +116,53 @@ function Todo() {
       setUnfinishedTodo(Dummy_incomplete);
     }
   };
-  useEffect(() => {
-    fetchTodayTodoData();
-  }, []);
-  // }, [displayDate]);
+
+  const fetchMyTodoData = async () => {
+    try {
+      const response = await API.get(`api/todos/${(userInfo.userId % 10) + 1}`);
+      setMyTodo(response.data.data);
+    } catch (error) {
+      console.log("-----My todo", error);
+      setMyTodo(Dummy_myTodo);
+    }
+  };
 
   useEffect(() => {
     fetchTodayTodoData();
     fetchUnfinishedData();
+    fetchMyTodoData();
   }, []);
 
   return (
     <s.TodoWrapper>
       <TeamCommonSectionTitle title="Todo" />
       <TeamCommonAlert />
-      <TodoBtnWrap />
+      <TodoBtnWrap setData={setMyTodoClicked}/>
       <s.TodoContentsWrapper>
-        {/* 캘린더 */}
         <TeamCalendar $getSelectedDate={getSelectedDate} />
-        {/* 캘린더 */}
 
         <s.TodoListsWrapper>
           <s.Today>
             <s.TodayDate>{selectedDate}</s.TodayDate>
-            {todayTodo &&
-              todayTodo.map((t, index) => (
-                <TodoEntry key={index} todoInfo={t} isThroughGoal={false} />
-              ))}
+            {myTodoClicked
+              ? todayTodo &&
+                todayTodo.map((t, index) => (
+                  <TodoEntry
+                    key={index}
+                    todoInfo={t}
+                    isThroughGoal={false}
+                    type="full"
+                  />
+                ))
+              : myTodo &&
+                myTodo.map((t, index) => (
+                  <TodoEntry
+                    key={index}
+                    todoInfo={t}
+                    isThroughGoal={false}
+                    type="full"
+                  />
+                ))}
           </s.Today>
           <s.UnfinishedTasks>
             <s.UnfinishedDescription>
@@ -125,7 +170,12 @@ function Todo() {
             </s.UnfinishedDescription>
             {unfinishedTodo &&
               unfinishedTodo.map((u, index) => (
-                <TodoEntry key={index} todoInfo={u} isThroughGoal={false} />
+                <TodoEntry
+                  key={index}
+                  todoInfo={u}
+                  isThroughGoal={false}
+                  type="full"
+                />
               ))}
           </s.UnfinishedTasks>
         </s.TodoListsWrapper>

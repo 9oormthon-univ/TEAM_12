@@ -6,7 +6,7 @@ function TimelineView({ timelineData, goalName }) {
   const processGoalComment =
     timelineData.goalCommentList &&
     timelineData.goalCommentList.map(comment => (
-      <s.GoalComment $color={theme.memberColors[comment.commentMemberId]}>
+      <s.GoalComment $color={theme.memberColors[comment.commentMemberId%10+1]}>
         <s.GoalCommentDate>{comment.createdTime}</s.GoalCommentDate>
         <s.GoalCommentContent>{comment.content}</s.GoalCommentContent>
         <s.GoalCommentFeelingWrapper>"EMPTY"</s.GoalCommentFeelingWrapper>
@@ -17,11 +17,11 @@ function TimelineView({ timelineData, goalName }) {
     timelineData.todoCommentList &&
     timelineData.todoCommentList.map(todo => (
       <s.TodoWrapper key={todo.todoId}>
-        <s.TodoBox $color={theme.memberColors[todo.todoManagerMemberId]}>
+        <s.TodoBox $color={theme.memberColors[todo.todoManagerMemberId%10+1]}>
           <TeamCommonCheckField
             isChecked={true}
             text=""
-            color={theme.memberColors[todo.todoManagerMemberId]}
+            color={theme.memberColors[todo.todoManagerMemberId%10+1]}
           />
           <s.TodoBoxContentWrapper>
             <s.TodoTitle>{goalName}</s.TodoTitle>
@@ -32,7 +32,7 @@ function TimelineView({ timelineData, goalName }) {
           {todo.commentList.map(comment => {
             return (
               <s.TodoComment
-                $color={theme.memberColors[comment.commentMemberId]}
+                $color={theme.memberColors[comment.commentMemberId%10+1]}
               >
                 <s.TodoCommentContent>{comment.content}</s.TodoCommentContent>
                 <s.TodoCommentFeelingWrapper>

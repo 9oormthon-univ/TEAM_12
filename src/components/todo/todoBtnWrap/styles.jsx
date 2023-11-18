@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { theme } from "../../../style/theme";
 
 export const s = {
   TodoButtonsWrapper: styled.div`
@@ -20,10 +21,12 @@ export const s = {
     justify-content: center;
     align-items: center;
     gap: 0.625rem;
-    border-radius: ${({ $rad }) =>
-      $rad ? "0.3125rem 0rem 0rem 0.3125rem" : "0rem 0.3125rem 0.3125rem 0rem"};
+    border-radius: 0.3125rem;
     border: 1px solid ${p => p.theme.colors.gray2};
-    color: ${p => p.theme.colors.gray2};
+    color: ${({ $selected }) =>
+      $selected ? theme.colors.white : theme.colors.gray2};
+    background: ${({ $selected }) =>
+      $selected ? theme.colors.gray2 : theme.colors.white};
 
     font-size: 0.75rem;
   `,
