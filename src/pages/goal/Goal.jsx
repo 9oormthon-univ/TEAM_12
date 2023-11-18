@@ -175,8 +175,8 @@ function Goal() {
         {!params.todoId && (
           <s.GoalPageWrapper>
             <TeamCommonAlert />
-            <Top />
-            <GoalInfo />
+            <Top data={goalData}/>
+            <GoalInfo data={goalData}/>
             <s.NavBarWrapper>
               <s.NavBtnWrapper>
                 <s.NavBtn
