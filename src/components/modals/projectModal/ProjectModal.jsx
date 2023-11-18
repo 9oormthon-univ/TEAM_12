@@ -1,4 +1,4 @@
-import { Form } from "react-router-dom"
+import { Form, redirect } from "react-router-dom"
 import { useEffect } from "react";
 import {s} from "../makeModal/style"
 import { useDispatch, useSelector } from "react-redux"
@@ -12,7 +12,11 @@ function ProjectModal(){
 
   const {title} = useSelector(s => s.modal);
 
-  const closeModal = () => dispatch(modalAction.setCloseModal())
+  const closeModal = () => {
+    dispatch(modalAction.setCloseModal());
+    redirect('')
+  }
+
 
   const today = new Date().toISOString().split('T')[0];
 
@@ -32,6 +36,7 @@ function ProjectModal(){
         '프로젝트 내에서 맡은 역할을 적어주세요.'}/>;
 
   const pwContent = <s.FormInput type={titleHeader ? 'text' : 'password'} id="pw"
+        name="password"
         required placeholder={pwPlaceHolder} autoComplete="off"/>   
         
   

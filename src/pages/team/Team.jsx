@@ -15,14 +15,12 @@ function Team() {
 
   const dispatch = useDispatch();
 
-  if (teamInfos.members.length === 0)
-    dispatch(
-      modalAction.setShowModal({
-        type: "project",
-        title: "member",
-        addInfo: {}
-      })
-    );
+  if(teamInfos.members.length === 0) dispatch(modalAction.setShowModal({
+      type: "project",
+      title: "member",
+      addInfo: {}
+    }))
+  else dispatch(modalAction.setCloseModal({}))
 
   return (
     <>
