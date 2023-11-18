@@ -1,10 +1,11 @@
+import moment from 'moment';
 import { s } from "./style.jsx";
 
-function GoalInfo() {
+function GoalInfo({data}) {
   const title = `FE 1차 개발 마감`;
   const description = `라우터 설정, UIUX 그리기, API 연결하기`;
-  const periodStart = `2023년 10월 27일`;
-  const periodEnd = `2023년 11월 16일`;
+  const periodStart = moment(data.data.startDate).format("YYYY년 MM월 DD일");
+  const periodEnd =  moment(data.data.endDate).format("YYYY년 MM월 DD일");
   const period = `${periodStart} ~ ${periodEnd}`;
 
   return (
