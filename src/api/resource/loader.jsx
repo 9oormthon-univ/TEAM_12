@@ -8,117 +8,50 @@ export const getTeamInfo = async ({ request, params }) => {
   const [router] = Object.entries(params);
 
   const Dummy_Data = {
-    projectId: 3,
-    title: "회고록테스트",
-    description: "회고록 테스트 위한 API",
+    projectId: 4,
+    title: "TODO테스트",
+    description: "TODO 테스트 위한 API",
     password: "1234",
     mode: "NORMAL",
-    startDate: "2023-11-13",
-    finishDate: "2023-11-15",
+    startDate: "2023-11-2",
+    finishDate: null,
     endDate: "2023-11-19",
-    goals: [
-      {
-        goalId: 7,
-        projectId: 3,
-        title: "GoalAddTest",
-        content: "goal Add 추가",
-        startDate: "2023-11-14",
-        endDate: "2023-11-15",
-        goalAgreeList: [
-          {
-            goalAgreeId: 11,
-            memberId: 5,
-            memberCheck: true
-          },
-          {
-            goalAgreeId: 16,
-            memberId: 7,
-            memberCheck: true
-          },
-          {
-            goalAgreeId: 19,
-            memberId: 6,
-            memberCheck: true
-          }
-        ],
-        complete: true
-      },
-      {
-        goalId: 8,
-        projectId: 3,
-        title: "GoalMemberAddTest",
-        content: "Goal에 Member 추가",
-        startDate: "2023-11-14",
-        endDate: "2023-11-16",
-        goalAgreeList: [
-          {
-            goalAgreeId: 12,
-            memberId: 5,
-            memberCheck: true
-          },
-          {
-            goalAgreeId: 13,
-            memberId: 6,
-            memberCheck: true
-          },
-          {
-            goalAgreeId: 17,
-            memberId: 7,
-            memberCheck: true
-          }
-        ],
-        complete: true
-      },
-      {
-        goalId: 9,
-        projectId: 3,
-        title: "MemberAddTest",
-        content: "Member 추가 후 agree 확인",
-        startDate: "2023-11-14",
-        endDate: "2023-11-15",
-        goalAgreeList: [
-          {
-            goalAgreeId: 14,
-            memberId: 5,
-            memberCheck: true
-          },
-          {
-            goalAgreeId: 15,
-            memberId: 6,
-            memberCheck: true
-          },
-          {
-            goalAgreeId: 18,
-            memberId: 7,
-            memberCheck: true
-          }
-        ],
-        complete: true
-      }
-    ],
+
     members: [
       {
-        id: 5,
-        nickname: "--MEMBER API TEST--",
-        role: "BE",
-        color: "red"
+        id: 1,
+        nickname: "GOALTODOAPI",
+        role: "BE"
       },
       {
-        id: 6,
-        nickname: "!-MEMBER API TEST-!",
-        role: "FE",
-        color: "yellow"
+        id: 2,
+        nickname: "GOALTODOAPI",
+        role: "BE"
       },
       {
-        id: 7,
-        nickname: "멤버&goalAgree",
-        role: "PD",
-        color: "green"
+        nickname: "GOALTODOAPI",
+        role: "BE"
       }
     ],
-    progress: 100.0
+    progress: 0.0
+    // ,goals: [
+    //   {
+    //     goalId: 10,
+    //     projectId: 4,
+    //     title: "TODO-TEST",
+    //     content: "GOAL-todo 추가",
+    //     startDate: "2023-11-14",
+    //     endDate: "2023-11-15",
+    //     goalAgreeList: [
+    //       {
+    //         goalAgreeId: 20,
+    //         memberId: 8,
+    //         memberCheck: false
+    //       }
+    //     ]
+    //   }
+    // ],
   };
-
   // try {
   //   const res = await API.get(`projects/${router[1]}`);
   //   return res.data;

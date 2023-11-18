@@ -10,7 +10,6 @@ function Team() {
   //아래에 useLoaderData는 main에서 이 페이지에다가 getTeamInfo라는 함수로 loader를 이용한 데이터를
   //받을 것이니 받을 준비해라~ 이뜻 입니다 아마 teamInfos에 괄호{}씌워서 구조분해할당 해야할수도 잇음
   const teamInfos = useLoaderData();
-  console.log(teamInfos);
 
   const TodayLists = [
     {
@@ -124,14 +123,20 @@ function Team() {
       </main>
       <s.Team>
         <TeamPageHeader
-          name={"가치구름"}
-          descript={"협업 기록을 통한 구름 키우기 서비스"}
+          name={teamInfos.title}
+          descript={teamInfos.description}
         />
         <s.Line />
         <s.TeamPageBody>
-          <TeamNav progress={20} teams={teamInfos.members} />
+          <TeamNav progress={teamInfos.progress} teams={teamInfos.members} />
           <s.TeamPageContent>
-            <GoalScheduleWrapper />
+            <GoalScheduleWrapper
+              Date={{
+                start: teamInfos.startDate,
+                end: teamInfos.endDate,
+                fin: teamInfos.finishDate
+              }}
+            />
             <Todo today={TodayLists} unfinished={UnfinishedLists} />
           </s.TeamPageContent>
         </s.TeamPageBody>

@@ -8,12 +8,12 @@ import CenterModal from "../../modals/centerModal/CenterModal";
 import GoalScheduleContent from "./GoalScheduleContent";
 import moment from "moment";
 
-function GoalSchedule({ startDate = "2023-11-2", endDate = "2023-11-15" }) {
+function GoalSchedule({ Date }) {
   const dispatch = useDispatch();
   const { showModal } = useSelector(s => s.modal);
 
-  const startMoment = moment(startDate, "YYYY-M-D");
-  const endMoment = moment(endDate, "YYYY-M-D");
+  const startMoment = moment(Date.start, "YYYY-M-D");
+  const endMoment = moment(Date.end, "YYYY-M-D");
 
   const addInfo = [startMoment, endMoment].map(
     e => e.toISOString().split("T")[0]
@@ -30,8 +30,8 @@ function GoalSchedule({ startDate = "2023-11-2", endDate = "2023-11-15" }) {
       {showModal && <CenterModal />}
       <TeamCommonAlert />
       <GoalScheduleContent
-        startDate={startDate}
-        endDate={endDate}
+        startDate={Date.start}
+        endDate={Date.end}
         type="team"
       />
       <s.AddGoalDiv>
