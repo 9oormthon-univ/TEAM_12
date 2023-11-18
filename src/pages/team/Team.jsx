@@ -3,23 +3,14 @@ import { s } from "./style";
 import TeamPageHeader from "../../components/team/teamPageHeader/TeamPageHeader";
 import TeamNav from "../../components/team/teamNav/TeamNav";
 import Todo from "../../components/team/todo/Todo.jsx";
-import GoalScheduleWrapper from '../../components/goal/goalScheduleWrap/GoalScheduleWrapper.jsx'
+import GoalScheduleWrapper from "../../components/goal/goalScheduleWrap/GoalScheduleWrapper.jsx";
 import { Outlet, useLoaderData } from "react-router-dom";
 
 function Team() {
-
   //아래에 useLoaderData는 main에서 이 페이지에다가 getTeamInfo라는 함수로 loader를 이용한 데이터를
   //받을 것이니 받을 준비해라~ 이뜻 입니다 아마 teamInfos에 괄호{}씌워서 구조분해할당 해야할수도 잇음
-  // const {teamInfos} = useLoaderData();
-
-  const TeamNames = [
-    { name: "이종범", part: "BE", color: "red" },
-    { name: "강민주", part: "PD", color: "orange" },
-    { name: "심서현", part: "Design", color: "yellow" },
-    { name: "박철민", part: "FE", color: "green" },
-    { name: "신유수", part: "FE", color: "blue" },
-    { name: "강희진", part: "BE", color: "purple" }
-  ];
+  const teamInfos = useLoaderData();
+  console.log(teamInfos);
 
   const TodayLists = [
     {
@@ -138,7 +129,7 @@ function Team() {
         />
         <s.Line />
         <s.TeamPageBody>
-          <TeamNav progress={20} teams={TeamNames} />
+          <TeamNav progress={20} teams={teamInfos.members} />
           <s.TeamPageContent>
             <GoalScheduleWrapper />
             <Todo today={TodayLists} unfinished={UnfinishedLists} />

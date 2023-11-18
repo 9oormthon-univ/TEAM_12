@@ -18,7 +18,12 @@ function TeamNav({ progress, teams }) {
   };
 
   const members = teams.map(e => (
-    <TeamNavMember key={e.name} name={e.name} part={e.part} col={e.color} />
+    <TeamNavMember
+      key={e.id}
+      nickname={e.nickname}
+      role={e.role}
+      col={e.color}
+    />
   ));
 
   return (
