@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as S from "./style";
 import { useNavigate } from "react-router-dom";
+import { API } from "../../api/axios";
 
 function SignUp() {
   const navigate = useNavigate();
@@ -44,7 +45,7 @@ function SignUp() {
     }
 
     try {
-      const response = await axios.post("/api/users/signup", {
+      const response = await API.post("/api/users/signup", {
         userName: userName,
         password: password,
         fullName: fullName

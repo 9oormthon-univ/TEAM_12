@@ -3,9 +3,10 @@ import * as S from "./style";
 
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import axios from "axios";
+
 import { useRecoilState } from "recoil";
 import { userState } from "../../context/authState";
+import { API } from "../../api/axios";
 
 function Login() {
   const navigate = useNavigate();
@@ -33,7 +34,7 @@ function Login() {
     }
 
     try {
-      const response = await axios.post("/api/users/login", {
+      const response = await API.post("/api/users/login", {
         userName: userName,
         password: password
       });

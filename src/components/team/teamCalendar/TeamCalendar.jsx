@@ -17,7 +17,7 @@ function TeamCalendar({ $getSelectedDate }) {
     inCompleteDateList: []
   });
 
-  const fetchLanternsData = async () => {
+  const fetchData = async () => {
     try {
       const response = await API.get(
         `/api/todos/monthly?yearMonth=${moment(monthValue).format("YYYY-MM")}`
@@ -39,7 +39,7 @@ function TeamCalendar({ $getSelectedDate }) {
   }, [dateValue]);
 
   useEffect(() => {
-    fetchLanternsData();
+    fetchData();
   }, [monthValue]);
 
   return (
