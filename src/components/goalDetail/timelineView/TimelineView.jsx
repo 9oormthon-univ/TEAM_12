@@ -1,12 +1,12 @@
+import TeamCommonCheckField from "../../team/teamCommon/TeamCommonCheckField.jsx";
 import { s } from "./style.jsx";
+import { theme } from "../../../style/theme.js";
 
 function TimelineView({ timelineData, goalName }) {
-  const ColorList = [null, "green", "blue"];
-
   const processGoalComment =
     timelineData.goalCommentList &&
     timelineData.goalCommentList.map(comment => (
-      <s.GoalComment $color={ColorList[comment.commentMemberId]}>
+      <s.GoalComment $color={theme.memberColors[comment.commentMemberId]}>
         <s.GoalCommentDate>{comment.createdTime}</s.GoalCommentDate>
         <s.GoalCommentContent>{comment.content}</s.GoalCommentContent>
         <s.GoalCommentFeelingWrapper>"EMPTY"</s.GoalCommentFeelingWrapper>
@@ -17,12 +17,12 @@ function TimelineView({ timelineData, goalName }) {
     timelineData.todoCommentList &&
     timelineData.todoCommentList.map(todo => (
       <s.TodoWrapper key={todo.todoId}>
-        <s.TodoBox $color={ColorList[todo.todoManagerMemberId]}>
-          <s.ChkBox>
-            <s.ChkBoxLabel $color={ColorList[todo.todoManagerMemberId]}>
-              ✔
-            </s.ChkBoxLabel>
-          </s.ChkBox>
+        <s.TodoBox $color={theme.memberColors[todo.todoManagerMemberId]}>
+          <TeamCommonCheckField
+            isChecked={true}
+            text=""
+            color={theme.memberColors[todo.todoManagerMemberId]}
+          />
           <s.TodoBoxContentWrapper>
             <s.TodoTitle>{goalName}</s.TodoTitle>
             <s.TodoContent>{todo.todoContent}</s.TodoContent>
@@ -31,7 +31,9 @@ function TimelineView({ timelineData, goalName }) {
         <s.TodoCommentsWrapper>
           {todo.commentList.map(comment => {
             return (
-              <s.TodoComment>
+              <s.TodoComment
+                $color={theme.memberColors[comment.commentMemberId]}
+              >
                 <s.TodoCommentContent>{comment.content}</s.TodoCommentContent>
                 <s.TodoCommentFeelingWrapper>
                   "EMPTY"
