@@ -1,27 +1,71 @@
-import { useState } from "react";
+import TeamCommonCheckField from "./../../team/teamCommon/TeamCommonCheckField";
+import { useEffect, useState } from "react";
+import { theme } from "../../../style/theme.js";
 import { s } from "./style.jsx";
 
-function TodoEntry({ todoInfo: i, isThroughGoal }) {
-  const [isChecked, setIsChecked] = useState(false);
+function TodoEntry({ todoInfo: i, isThroughGoal, type }) {
+  const [isChecked, setIsChecked] = useState();
+  const [newRoute, setNewRoute] = useState("");
+  const [checkField, setCheckField] = useState("");
+  const [todoColor, setTodoColor] = useState("");
 
-  const newRoute = isThroughGoal
-    ? `todoId/${i.todoId}`
-    : `goalId/${i.goalId}/todoId/${i.todoId}`;
+  useEffect(() => {
+    i && setIsChecked(i.isComplete);
+    setNewRoute(
+      i && type === "readonly"
+        ? ``
+        : isThroughGoal
+        ? `todoId/${i.todoId}`
+        : `goalId/${i.goalId}/todoId/${i.todoId}`
+    );
+
+    setTodoColor(
+      type && type === "routeonly"
+        ? theme.memberColors[i.todoManagerId]
+        : theme.memberColors[i.todoManagerMemberId]
+    );
+
+    setCheckField(
+      type === "readonly" ? (
+        <TeamCommonCheckField
+          isChecked={true}
+          text=""
+          color={theme.memberColors[i.todoManagerMemberId]}
+        />
+      ) : type === "routeonly" ? (
+        <TeamCommonCheckField
+          isChecked={i.isComplete}
+          text=""
+          color={theme.memberColors[i.todoManagerId]}
+        />
+      ) : type === "full" ? (
+        <TeamCommonCheckField
+          isChecked={i.isComplete}
+          text=""
+          color={theme.memberColors[i.todoManagerMemberId]}
+        />
+      ) : (
+        ""
+      )
+    );
+  }, []);
 
   const CheckboxClickHandler = e => {
+    if (!i) return;
+    if (type !== "full") {
+      return;
+    }
     setIsChecked(prev => !prev);
   };
 
   return (
-    <s.TodoEntryWrapper to={newRoute} $color={i.color ?? i.todoManager}>
-      <s.CheckField onClick={CheckboxClickHandler}>
-        <s.ChkBox checked={isChecked}>
-          {isChecked && <s.ChkBoxLabel $color={i.color}>✔</s.ChkBoxLabel>}
-        </s.ChkBox>
-      </s.CheckField>
+    <s.TodoEntryWrapper to={newRoute} $color={todoColor}>
+      <s.CheckFieldWrapper onClick={CheckboxClickHandler}>
+        {i && checkField}
+      </s.CheckFieldWrapper>
       <s.TodoContentsWrapper>
-        <s.TodoCategory>{i.goalContent}</s.TodoCategory>
-        <s.TodoTitle>{i.todoContent}</s.TodoTitle>
+        <s.TodoCategory>{i && i.goalContent}</s.TodoCategory>
+        <s.TodoTitle>{i && i.todoContent}</s.TodoTitle>
       </s.TodoContentsWrapper>
     </s.TodoEntryWrapper>
   );
