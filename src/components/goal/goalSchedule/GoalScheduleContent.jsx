@@ -5,46 +5,52 @@ import moment from "moment";
 import GoalColumn from "../goalColumn/GoalColumn";
 import { useParams } from "react-router-dom";
 import { API } from "../../../api/axios";
+import { useSelector } from "react-redux";
 
 function GoalScheduleContent({ type = "team", Date }) {
+  
   const startDate = Date?.start;
   const endDate = Date?.end;
   const finishDate = Date?.fin;
 
+  
   const params = useParams();
 
-  const [goals, setGoals] = useState([]);
+  // const [goals, setGoals] = useState([]);
 
-  const fetchData = async () => {
-    try {
-      var response;
-      // ----팀페이지
-      if (type == "team") {
-        response = await API.get(`/api/projects/${params.teamId}`);
-        setGoals(response.data.goals);
-      }
-      // -----리포트페이지
-      else if (type == "report") {
-        response = await API.get(`/api/goals/report/${params.teamId}`);
-        setGoals(response.data);
-      }
-    } catch (error) {
-      console.log("----goal schedule content 에러~", error);
-      //api없을 경우 임시로 넣어두는 데이터, 추후 삭제 예정
-      // ----팀페이지
-      if (type == "team") {
-        setGoals(Dummy_goal_team);
-      }
-      // -----리포트페이지
-      else if (type == "report") {
-        setGoals(Dummy_goal_report);
-      }
-    }
-  };
+  const {goals} = useSelector(s=>s.goal);
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+
+  // const fetchData = async () => {
+  //   try {
+  //     var response;
+  //     // ----팀페이지
+  //     if (type == "team") {
+  //       response = await API.get(`/api/projects/${params.teamId}`);
+  //       setGoals(response.data.goals);
+  //     }
+  //     // -----리포트페이지
+  //     else if (type == "report") {
+  //       response = await API.get(`/api/goals/report/${params.teamId}`);
+  //       setGoals(response.data);
+  //     }
+  //   } catch (error) {
+  //     console.log("----goal schedule content 에러~", error);
+  //     //api없을 경우 임시로 넣어두는 데이터, 추후 삭제 예정
+  //     // ----팀페이지
+  //     if (type == "team") {
+  //       setGoals(Dummy_goal_team);
+  //     }
+  //     // -----리포트페이지
+  //     else if (type == "report") {
+  //       setGoals(Dummy_goal_report);
+  //     }
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
 
   //---- 날짜 반환 년, 월, 일
   const dateStringMaker = date => {
@@ -72,6 +78,7 @@ function GoalScheduleContent({ type = "team", Date }) {
   };
 
   const getColumn = data => {
+
     return {
       id: data.goalId,
       text: data.title,
@@ -81,61 +88,61 @@ function GoalScheduleContent({ type = "team", Date }) {
     };
   };
 
-  const Dummy_goal_team = [
-    {
-      goalId: 7,
-      projectId: 3,
-      title: "GoalAddTest",
-      content: "goal Add 추가",
-      startDate: "2023-11-2",
-      endDate: "2023-11-15",
-      complete: true,
-      progress: 80
-    },
-    {
-      goalId: 8,
-      projectId: 3,
-      title: "GoalMemberAddTest",
-      content: "Goal에 Member 추가",
-      startDate: "2023-11-10",
-      endDate: "2023-11-15",
-      complete: true,
-      progress: 50
-    },
-    {
-      goalId: 9,
-      projectId: 3,
-      title: "MemberAddTest",
-      content: "Member 추가 후 agree 확인",
-      startDate: "2023-11-14",
-      endDate: "2023-11-15",
-      complete: true,
-      progress: 20
-    }
-  ];
+  // const Dummy_goal_team = [
+  //   {
+  //     goalId: 7,
+  //     projectId: 3,
+  //     title: "GoalAddTest",
+  //     content: "goal Add 추가",
+  //     startDate: "2023-11-2",
+  //     endDate: "2023-11-15",
+  //     complete: true,
+  //     progress: 80
+  //   },
+  //   {
+  //     goalId: 8,
+  //     projectId: 3,
+  //     title: "GoalMemberAddTest",
+  //     content: "Goal에 Member 추가",
+  //     startDate: "2023-11-10",
+  //     endDate: "2023-11-15",
+  //     complete: true,
+  //     progress: 50
+  //   },
+  //   {
+  //     goalId: 9,
+  //     projectId: 3,
+  //     title: "MemberAddTest",
+  //     content: "Member 추가 후 agree 확인",
+  //     startDate: "2023-11-14",
+  //     endDate: "2023-11-15",
+  //     complete: true,
+  //     progress: 20
+  //   }
+  // ];
 
-  const Dummy_goal_report = [
-    {
-      goalId: 1,
-      projectId: 1,
-      title: "개발하기",
-      startDate: "2023-11-05",
-      endDate: "2023-11-13",
-      finishDate: null,
-      complete: false,
-      progress: 20
-    },
-    {
-      goalId: 2,
-      projectId: 1,
-      title: "GoalAddTest",
-      startDate: "2023-11-6",
-      endDate: "2023-11-7",
-      finishDate: "2023-11-9",
-      complete: true,
-      progress: 20
-    }
-  ];
+  // const Dummy_goal_report = [
+  //   {
+  //     goalId: 1,
+  //     projectId: 1,
+  //     title: "개발하기",
+  //     startDate: "2023-11-05",
+  //     endDate: "2023-11-13",
+  //     finishDate: null,
+  //     complete: false,
+  //     progress: 20
+  //   },
+  //   {
+  //     goalId: 2,
+  //     projectId: 1,
+  //     title: "GoalAddTest",
+  //     startDate: "2023-11-6",
+  //     endDate: "2023-11-7",
+  //     finishDate: "2023-11-9",
+  //     complete: true,
+  //     progress: 20
+  //   }
+  // ];
 
   return (
     <>

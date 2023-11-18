@@ -10,7 +10,7 @@ function ProjectModal(){
 
   const dispatch = useDispatch();
 
-  const {title} = useSelector(s => s.modal);
+  const {title,addInfo} = useSelector(s => s.modal);
 
   const closeModal = () => {
     dispatch(modalAction.setCloseModal());
@@ -39,13 +39,16 @@ function ProjectModal(){
         name="password"
         required placeholder={pwPlaceHolder} autoComplete="off"/>   
         
-  
+  // const welcomeComment = `'새 프로젝트 만들기' ${}`
 
   return(
     <Form method="POST" onSubmit={closeModal}>
       <s.List>
         <s.Header>
-          <s.Title>{titleHeader ? '새 프로젝트 만들기' : '프로젝트 참여하기'}</s.Title>
+          <s.Title>
+            {titleHeader ? '새 프로젝트 만들기' : '프로젝트 참여하기'}
+            {addInfo.isFirst && '(첫번째)'}
+          </s.Title>
           <s.CloseBtn onClick={closeModal}
             src='/Close.png'/>
         </s.Header>
