@@ -9,7 +9,7 @@ export const s = {
     align-items: center;
     height: fit-content;
   `,
-  Goal: styled.div`
+  Goal: styled(Link)`
     display: flex;
     position: relative;
     width: ${({ $width }) => $width}%;
