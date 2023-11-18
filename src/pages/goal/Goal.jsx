@@ -85,35 +85,21 @@ function Goal() {
 
   const DUMMY_TODOLIST = [
     {
-      goalId: 1,
-      goalContent: "FE 개발 1차 마감",
-      todoId: 1,
-      todoContent: "도메인 구매하기",
-      todoManager: "blue",
-      isComplete: false
-    },
-    {
-      goalId: 2,
-      goalContent: "FE 개발 1차 마감",
+      groupId: 10,
+      goalContent: "GOAL-todo 추가",
       todoId: 2,
-      todoContent: "Progress 디자인 수정 반영",
-      todoManager: "green",
+      todoContent: "testTodo",
+      todoManagerId: 1,
+      todoManagerNickName: "testmember",
       isComplete: false
     },
     {
-      goalId: 3,
-      goalContent: "FE 개발 1차 마감",
+      groupId: 10,
+      goalContent: "GOAL-todo 추가",
       todoId: 3,
-      todoContent: "TeamPage member 초대 오류 수정하기 2",
-      todoManager: "blue",
-      isComplete: true
-    },
-    {
-      goalId: 4,
-      goalContent: "FE 개발 1차 마감",
-      todoId: 4,
-      todoContent: "TeamPage member 초대 오류 수정하기",
-      todoManager: "green",
+      todoContent: "testTodo",
+      todoManagerId: 8,
+      todoManagerNickName: "GOALTODOAPI",
       isComplete: true
     }
   ];
@@ -176,7 +162,7 @@ function Goal() {
     };
     fetchData();
     setGoalTitle(DUMMY_TODOLIST[0].goalContent ?? "");
-  }, [param.goalId]);
+  }, [params.goalId]);
 
   const TabClickHandler = tab => {
     setActiveTab(tab);
@@ -186,7 +172,7 @@ function Goal() {
     <>
       <s.Backdrop to={".."} />
       <s.Content>
-        {!param.todoId && (
+        {!params.todoId && (
           <s.GoalPageWrapper>
             <TeamCommonAlert />
             <Top />

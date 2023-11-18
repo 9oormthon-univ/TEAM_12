@@ -13,13 +13,16 @@ function Team() {
   //받을 것이니 받을 준비해라~ 이뜻 입니다 아마 teamInfos에 괄호{}씌워서 구조분해할당 해야할수도 잇음
   const teamInfos = useLoaderData();
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  if(teamInfos.members.length === 0) dispatch(modalAction.setShowModal({
-      type: "project",
-      title: "member",
-      addInfo: {}
-    }))
+  if (teamInfos.members.length === 0)
+    dispatch(
+      modalAction.setShowModal({
+        type: "project",
+        title: "member",
+        addInfo: {}
+      })
+    );
 
   return (
     <>
@@ -42,7 +45,7 @@ function Team() {
                 fin: teamInfos.finishDate
               }}
             />
-            {/* <Todo /> */}
+            <Todo />
           </s.TeamPageContent>
         </s.TeamPageBody>
       </s.Team>
