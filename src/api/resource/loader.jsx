@@ -18,20 +18,20 @@ export const getTeamInfo = async ({ request, params }) => {
     endDate: "2023-11-19",
 
     members: [
-      {
-        id: 1,
-        nickname: "GOALTODOAPI",
-        role: "BE"
-      },
-      {
-        id: 2,
-        nickname: "GOALTODOAPI",
-        role: "BE"
-      },
-      {
-        nickname: "GOALTODOAPI",
-        role: "BE"
-      }
+      // {
+      //   id: 1,
+      //   nickname: "GOALTODOAPI",
+      //   role: "BE"
+      // },
+      // {
+      //   id: 2,
+      //   nickname: "GOALTODOAPI",
+      //   role: "BE"
+      // },
+      // {
+      //   nickname: "GOALTODOAPI",
+      //   role: "BE"
+      // }
     ],
     progress: 0.0
     // ,goals: [
