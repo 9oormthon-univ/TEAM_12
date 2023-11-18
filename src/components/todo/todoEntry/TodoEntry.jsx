@@ -5,13 +5,50 @@ import { s } from "./style.jsx";
 
 function TodoEntry({ todoInfo: i, isThroughGoal, type }) {
   const [isChecked, setIsChecked] = useState();
+  const [newRoute, setNewRoute] = useState("");
+  const [checkField, setCheckField] = useState("");
+  const [todoColor, setTodoColor] = useState("");
 
-  const newRoute =
-    i && type === "readonly"
-      ? ``
-      : isThroughGoal
-      ? `todoId/${i.todoId}`
-      : `goalId/${i.goalId}/todoId/${i.todoId}`;
+  useEffect(() => {
+    i && setIsChecked(i.isComplete);
+    setNewRoute(
+      i && type === "readonly"
+        ? ``
+        : isThroughGoal
+        ? `todoId/${i.todoId}`
+        : `goalId/${i.goalId}/todoId/${i.todoId}`
+    );
+
+    setTodoColor(
+      type && type === "routeonly"
+        ? theme.memberColors[i.todoManagerId]
+        : theme.memberColors[i.todoManagerMemberId]
+    );
+
+    setCheckField(
+      type === "readonly" ? (
+        <TeamCommonCheckField
+          isChecked={true}
+          text=""
+          color={theme.memberColors[i.todoManagerMemberId]}
+        />
+      ) : type === "routeonly" ? (
+        <TeamCommonCheckField
+          isChecked={i.isComplete}
+          text=""
+          color={theme.memberColors[i.todoManagerId]}
+        />
+      ) : type === "full" ? (
+        <TeamCommonCheckField
+          isChecked={i.isComplete}
+          text=""
+          color={theme.memberColors[i.todoManagerMemberId]}
+        />
+      ) : (
+        ""
+      )
+    );
+  }, []);
 
   const CheckboxClickHandler = e => {
     if (!i) return;
@@ -21,48 +58,14 @@ function TodoEntry({ todoInfo: i, isThroughGoal, type }) {
     setIsChecked(prev => !prev);
   };
 
-  const SelectCheckField = () => {
-    if (!i) return;
-    if (type === "readonly") {
-      return (
-        <TeamCommonCheckField
-          isChecked={true}
-          text=""
-          color={theme.memberColors[i.todoManagerMemberId]}
-        />
-      );
-    } else if (type === "routeonly") {
-      return (
-        <TeamCommonCheckField
-          isChecked={isChecked}
-          text=""
-          color={theme.memberColors[i.todoManagerId]}
-        />
-      );
-    } else if (type === "full") {
-      return (
-        <TeamCommonCheckField
-          isChecked={isChecked}
-          text=""
-          color={theme.memberColors[i.todoManagerMemberId]}
-        />
-      );
-    }
-  };
-
-  const TypedCheckField = SelectCheckField();
-
   return (
-    <s.TodoEntryWrapper
-      to={newRoute}
-      $color={theme.memberColors[i.todoManagerMemberId]}
-    >
+    <s.TodoEntryWrapper to={newRoute} $color={todoColor}>
       <s.CheckFieldWrapper onClick={CheckboxClickHandler}>
-        {TypedCheckField}
+        {i && checkField}
       </s.CheckFieldWrapper>
       <s.TodoContentsWrapper>
-        <s.TodoCategory>{i.goalContent}</s.TodoCategory>
-        <s.TodoTitle>{i.todoContent}</s.TodoTitle>
+        <s.TodoCategory>{i && i.goalContent}</s.TodoCategory>
+        <s.TodoTitle>{i && i.todoContent}</s.TodoTitle>
       </s.TodoContentsWrapper>
     </s.TodoEntryWrapper>
   );
