@@ -24,7 +24,21 @@ const colors = {
   red :'#f0446e'
 };
 
+const memberColors={
+  1: "#FF3333", // red
+  2: "#FF8000",
+  3: "#FFFF00",
+  4: "#80FF00",
+  5:"#00FFFF",
+  6:"#0000FF",
+  7:"#7F00FF",
+  8:"#FF00FF",
+  9:"#808080", 
+  10:"#000000" // black
+};
+
 export const theme = {
-  colors
+  colors,
+  memberColors
 };
 export default colors;
