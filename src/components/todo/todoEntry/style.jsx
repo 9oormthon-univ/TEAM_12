@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { theme } from "../../../style/theme";
 import styled from "styled-components";
 
 export const s = {
@@ -10,6 +11,9 @@ export const s = {
     align-self: stretch;
     border-radius: 0.625rem;
     border: 2px solid ${({ $color }) => $color};
+  `,
+  CheckFieldWrapper: styled.div`
+    display: flex;
   `,
   TodoContentsWrapper: styled.div`
     display: flex;
