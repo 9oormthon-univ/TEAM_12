@@ -52,16 +52,12 @@ export const getTeamInfo = async ({ request, params }) => {
     //   }
     // ],
   };
-  // try {
-  //   const res = await API.get(`projects/${router[1]}`);
-  //   return res.data;
-  // } catch {
-  return Dummy_Data;
-  // }
-
-  // if (res.status > 299) alert("으악 에러다!");
-
-  // 아마 별다른 에러가 아니면 res.data에 우리가 원하는 프로젝트 단건 조회 답이 옵니다
-  // 그리고 이걸 쓸 팀페이지에 추가 설명 있습니다.
-  // return data;
+  try {
+    const res = await API.get(`api/projects/${router[1]}`);
+    console.log("로더 성공");
+    return res.data;
+  } catch {
+    console.log("로더 실패");
+    return Dummy_Data;
+  }
 };

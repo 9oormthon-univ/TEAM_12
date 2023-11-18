@@ -10,15 +10,7 @@ import TodoBtnWrap from "../../todo/todoBtnWrap/TodoBtnWrap.jsx";
 import TodoEntry from "./../../todo/todoEntry/TodoEntry";
 import { API } from "../../../api/axios.js";
 
-function Todo({ today, unfinished }) {
-  const todayTasks = today.map(t => (
-    <TodoEntry key={t.todoId} todoInfo={t} isThroughGoal={false} />
-  ));
-
-  const unfinishedTasks = unfinished.map(u => (
-    <TodoEntry key={u.todoId} todoInfo={u} isThroughGoal={false} />
-  ));
-
+function Todo() {
   const [displayDate, setDisplayDate] = useState("");
   const [selectedDate, setSelectedDate] = useState(
     moment().format("YYYY년 M월 D일")
@@ -73,13 +65,17 @@ function Todo({ today, unfinished }) {
         <s.TodoListsWrapper>
           <s.Today>
             <s.TodayDate>{selectedDate}</s.TodayDate>
-            {todayTasks}
+            {todayTodo.map(t => (
+              <TodoEntry key={t.todoId} todoInfo={t} isThroughGoal={false} />
+            ))}
           </s.Today>
           <s.UnfinishedTasks>
             <s.UnfinishedDescription>
               {unfinishedDescription}
             </s.UnfinishedDescription>
-            {unfinishedTasks}
+            {unfinishedTodo.map(u => (
+              <TodoEntry key={u.todoId} todoInfo={u} isThroughGoal={false} />
+            ))}
           </s.UnfinishedTasks>
         </s.TodoListsWrapper>
       </s.TodoContentsWrapper>

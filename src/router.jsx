@@ -39,7 +39,7 @@ const router = createBrowserRouter([
           }
         ]
       },
-      { path: "/report/:teamId", element: <Report /> },
+      { path: "/report/:teamId", element: <Report />, loader: getTeamInfo },
       { path: "/login", element: <Login /> },
       { path: "/signup", element: <SignUP /> }
     ],

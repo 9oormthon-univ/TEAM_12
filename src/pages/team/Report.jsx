@@ -3,23 +3,14 @@ import { s } from "./style.jsx";
 import TeamPageHeader from "../../components/team/teamPageHeader/TeamPageHeader.jsx";
 import TeamNav from "../../components/team/teamNav/TeamNav.jsx";
 
-import { Outlet } from "react-router-dom";
+import { Outlet, useLoaderData } from "react-router-dom";
 
 import GoalScheduleContent from "../../components/goal/goalSchedule/GoalScheduleContent.jsx";
 import TodoCount from "../../components/todo/todoCount/TodoCount.jsx";
 import Memori from "../../components/report/memori/Memori.jsx";
 
 function Report() {
-  const startDate = "2023-11-2";
-  const endDate = "2023-11-15";
-  const TeamNames = [
-    { name: "이종범", part: "BE", color: "red" },
-    { name: "강민주", part: "PD", color: "orange" },
-    { name: "심서현", part: "Design", color: "yellow" },
-    { name: "박철민", part: "FE", color: "green" },
-    { name: "신유수", part: "FE", color: "blue" },
-    { name: "강희진", part: "BE", color: "purple" }
-  ];
+  const teamInfos = useLoaderData();
 
   return (
     <>
@@ -28,12 +19,12 @@ function Report() {
       </main>
       <s.Team>
         <TeamPageHeader
-          name={"가치구름"}
-          descript={"협업 기록을 통한 구름 키우기 서비스"}
+          name={teamInfos.title}
+          descript={teamInfos.description}
         />
         <s.Line />
         <s.TeamPageBody>
-          <TeamNav progress={20} teams={TeamNames} />
+          <TeamNav progress={teamInfos.progress} teams={teamInfos.members} />
           <s.TeamPageContent>
             {/* ---- 투두 카운트 ---- */}
             <TodoCount />
@@ -41,8 +32,11 @@ function Report() {
 
             {/* ---- 골 달성 정도 체크  ---- */}
             <GoalScheduleContent
-              startDate={startDate}
-              endDate={endDate}
+              Date={{
+                start: teamInfos.startDate,
+                end: teamInfos.endDate,
+                fin: teamInfos.finishDate
+              }}
               type="report"
             />
             {/* ---- 골 달성 정도 체크  ---- */}
