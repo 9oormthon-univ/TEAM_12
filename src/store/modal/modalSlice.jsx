@@ -5,20 +5,25 @@ const initialState = {
     showModal: false,
     type: '',
     title:'',
-    addInfo:{}
+    addInfo:{},
+    managers : [],
+    goals : [],
+    duration : [],
 }
 
 export const todoGetMemList = createAsyncThunk(
     'modalSlice/todoGetMemList',
     async (projectId)=>{
-        return {res} = await API.get(`members/${projectId}`); 
+        const res = await API.get(`/api/members/${projectId}`); 
+        return res.data.data;
     }
 )
 
 export const todoGetGoalList = createAsyncThunk(
     'modalSlice/todoGetGoalList',
     async (projectId) => {
-        return {res} = await API.get(`projects/${projectId}/goals`);
+        const res = await API.get(`/api/projects/${projectId}/goals`);
+        return res.data.data;
     }
 )
 
@@ -36,16 +41,15 @@ const modalSlice = createSlice({
             state.showModal = false
             state.type = ''
             state.title = ''
-            state.addInfo = {}
         }
     },
     extraReducers:(builder)=>{
         builder.addCase(todoGetMemList.fulfilled,(state,action)=>{
-            state.addInfo.managers = action.payload;
+            state.managers = action.payload;
         }),
         builder.addCase(todoGetGoalList.fulfilled,(state,action)=>{
-            state.addInfo.goals = action.payload.map(e=>e.title);
-            state.addInfo.duration = [
+            state.goals = action.payload.map(e=>e);
+            state.duration = [
                 action.payload.map(e=>e.startDate),
                 action.payload.map(e=>e.endDate)
             ];

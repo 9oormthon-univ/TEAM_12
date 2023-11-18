@@ -9,31 +9,46 @@ export const s = {
     align-items: center;
     height: fit-content;
   `,
-  Goal: styled(Link)`
-    display: flex;
-    position: relative;
-    width: ${({ $width }) => $width}%;
+
+  GoalWrapper : styled(Link)`
+  position: relative;
+  display: flex;
+  justify-content: center;
+    text-align: center;
+  width: ${({ $width }) => $width}%;
 
     left: ${({ $position }) => $position}%;
+    border: 1px solid ;
+    border-radius: 0.625rem;
+    border-color:${p => p.theme.colors.gray2};
+    color:${p => p.theme.colors.gray4};
+  `,
+
+  Goal: styled.div`
+    
+    
+    
     opacity: ${({ $progress }) => $progress}%;
-    padding: 0.3125rem 0.625rem;
+    
     justify-content: center;
     align-items: center;
     gap: 0.625rem;
     flex-shrink: 0;
-    border-radius: 0.625rem;
-    border: 1px solid ${p => p.theme.colors.gray2};
+    
+    
     background: ${p => p.theme.colors.gray3};
     z-index: 1;
   `,
 
   GoalInlineText: styled.div`
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
-    flex: 1 0 0;
+    width:100%;
+
+    height:100%;
+    display:flex;
+  
+    
     overflow: hidden;
-    color: ${p => p.theme.colors.white};
+    justify-content: center;
     text-align: center;
     text-overflow: ellipsis;
 
@@ -52,9 +67,10 @@ export const s = {
     position: relative;
     z-index: 10;
     flex-direction: column;
+    align-items: center;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+
     width: 0.4rem;
   `,
 
